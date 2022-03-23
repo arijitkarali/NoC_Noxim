@@ -15,8 +15,10 @@
 #include "GlobalParams.h"
 
 #include <csignal>
+#include<chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 // need to be globally visible to allow "-volume" simulation stop
 unsigned int drained_volume;
@@ -102,10 +104,12 @@ int sc_main(int arg_num, char *arg_vet[])
     reset.write(0);
     cout << " done! " << endl;
     cout << " Now running for " << GlobalParams:: simulation_time << " cycles..." << endl;
+    auto start = high_resolution_clock::now();
     sc_start(GlobalParams::simulation_time, SC_NS);
 
 
     // Close the simulation
+    auto stop = high_resolution_clock::now();
     if (GlobalParams::trace_mode) sc_close_vcd_trace_file(tf);
     cout << "Noxim simulation completed.";
     cout << " (" << sc_time_stamp().to_double() / GlobalParams::clock_period_ps << " cycles executed)" << endl;
@@ -114,6 +118,8 @@ int sc_main(int arg_num, char *arg_vet[])
     // Show statistics
     GlobalStats gs(n);
     gs.showStats(std::cout, GlobalParams::detailed);
+    auto duration = duration_cast<seconds>(stop-start);
+    cout << "% " << "evaluation time: " << duration.count() << " seconds" << endl;
 
 
     if ((GlobalParams::max_volume_to_be_drained > 0) &&
