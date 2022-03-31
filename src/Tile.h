@@ -132,16 +132,30 @@ SC_MODULE(Tile)
 	pe->clock(clock);
 	pe->reset(reset);
 
-	pe->flit_rx(flit_rx_local);
-	pe->req_rx(req_rx_local);
-	pe->ack_rx(ack_rx_local);
-	pe->buffer_full_status_rx(buffer_full_status_rx_local);
+	pe->flit_rx[0] (flit_rx_local);
+	pe->req_rx[0] (req_rx_local);
+	pe->ack_rx[0] (ack_rx_local);
+	pe->buffer_full_status_rx[0] (buffer_full_status_rx_local);
 	
 
-	pe->flit_tx(flit_tx_local);
-	pe->req_tx(req_tx_local);
-	pe->ack_tx(ack_tx_local);
-	pe->buffer_full_status_tx(buffer_full_status_tx_local);
+	pe->flit_tx[0] (flit_tx_local);
+	pe->req_tx[0] (req_tx_local);
+	pe->ack_tx[0] (ack_tx_local);
+	pe->buffer_full_status_tx[0] (buffer_full_status_tx_local);
+	
+	
+	// Adding PE-hub connection
+	pe->flit_rx[1] (hub_flit_rx);
+	pe->req_rx[1] (hub_req_rx);
+	pe->ack_rx[1] (hub_ack_rx);
+	pe->buffer_full_status_rx[1] (hub_buffer_full_status_rx);
+
+	pe->flit_tx[1] (hub_flit_tx);
+	pe->req_tx[1] (hub_req_tx);
+	pe->ack_tx[1] (hub_ack_tx);
+	pe->buffer_full_status_tx[1] (hub_buffer_full_status_tx);
+
+	
 
 	// NoP
 	//

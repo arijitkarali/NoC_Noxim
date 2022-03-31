@@ -19,7 +19,7 @@ int Hub::tile2Port(int id)
 int Hub::route(Flit& f)
 {
 	// check if it is a local delivery
-	for (vector<int>::size_type i=0; i< GlobalParams::hub_configuration[local_id].attachedNodes.size();i++)
+	/*for (vector<int>::size_type i=0; i< GlobalParams::hub_configuration[local_id].attachedNodes.size();i++)
 	{
 		// ...to a destination which is connected to the Hub
 		if (GlobalParams::hub_configuration[local_id].attachedNodes[i]==f.dst_id)
@@ -33,7 +33,8 @@ int Hub::route(Flit& f)
 			return tile2Port(f.hub_relay_node);
 		}
 
-	}
+	}*/
+	if(local_id == f.dst_id) return DIRECTION_LOCAL;
 	return DIRECTION_WIRELESS;
 
 }
@@ -503,7 +504,14 @@ void Hub::tileToAntennaProcess()
 					TReservation r;
 					r.input = i;
 					r.vc = vc;
-
+					
+					//if the flit to be sent takes wired hop
+					//assert(r_from_tile[i][vc]==DIRECTION_LOCAL);
+					
+					
+					
+					//if the flit to be sent takes wireless hop
+					
 					assert(r_from_tile[i][vc]==DIRECTION_WIRELESS);
 					int channel;
 

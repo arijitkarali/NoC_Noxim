@@ -47,6 +47,7 @@ bool GlobalParams::detailed;
 double GlobalParams::dyad_threshold;
 unsigned int GlobalParams::max_volume_to_be_drained;
 vector <pair <int, double> > GlobalParams::hotspots;
+vector<int> GlobalParams::HubLocations;
 bool GlobalParams::show_buffer_stats;
 bool GlobalParams::use_winoc;
 int GlobalParams::winoc_dst_hops;
@@ -57,6 +58,8 @@ HubConfig GlobalParams::default_hub_configuration;
 map<int, HubConfig> GlobalParams::hub_configuration;
 map<int, int> GlobalParams::hub_for_tile;
 PowerConfig GlobalParams::power_configuration;
+int GlobalParams::subnetsz;
+vector<nearestHub> GlobalParams::nearestHubs;
 // out of yaml configuration
 bool GlobalParams::ascii_monitor;
 int GlobalParams::channel_selection;

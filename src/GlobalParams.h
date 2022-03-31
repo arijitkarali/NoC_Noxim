@@ -97,7 +97,6 @@ typedef struct {
 } ChannelConfig;
 
 typedef struct {
-    int location;
     vector<int> attachedNodes;
     vector<int> rxChannels;
     vector<int> txChannels;
@@ -139,6 +138,14 @@ typedef struct {
     HubPowerConfig hubPowerConfig;
 } PowerConfig;
 
+typedef struct
+{
+	int nearestHubId;
+	int distance;
+	vector<int> directions;
+	int directionSelector;
+}nearestHub;
+
 struct GlobalParams {
     static string verbose_mode;
     static int trace_mode;
@@ -156,6 +163,7 @@ struct GlobalParams {
     static string routing_algorithm;
     static string routing_table_filename;
     static string selection_strategy;
+    static vector<int> HubLocations;
     static double packet_injection_rate;
     static double probability_of_retransmission;
     static double locality;
@@ -183,6 +191,8 @@ struct GlobalParams {
     static map<int, HubConfig> hub_configuration;
     static map<int, int> hub_for_tile;
     static PowerConfig power_configuration;
+    static int subnetsz;
+    static vector<nearestHub> nearestHubs;
     // out of yaml configuration
     static bool ascii_monitor;
     static int channel_selection;

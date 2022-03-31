@@ -19,21 +19,25 @@ int ProcessingElement::randInt(int min, int max)
 void ProcessingElement::rxProcess()
 {
     if (reset.read()) {
-	ack_rx.write(0);
-	current_level_rx = 0;
+    	if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),local_id)!=GlobalParams::HubLocations.end())
+		ack_rx[1].write(0);
+	else ack_rx[0].write(0);
+	current_level_rx = 0;	
     } else {
-	if (req_rx.read() == 1 - current_level_rx) {
-	    Flit flit_tmp = flit_rx.read();
+	if (req_rx[0].read() == 1 - current_level_rx) {
+	    Flit flit_tmp = flit_rx[0].read();
 	    current_level_rx = 1 - current_level_rx;	// Negate the old value for Alternating Bit Protocol (ABP)
 	}
-	ack_rx.write(current_level_rx);
+	ack_rx[0].write(current_level_rx);
     }
 }
 
 void ProcessingElement::txProcess()
 {
     if (reset.read()) {
-	req_tx.write(0);
+    	if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),local_id)!=GlobalParams::HubLocations.end())
+		req_tx[1].write(0);
+	else req_tx[0].write(0);
 	current_level_tx = 0;
 	transmittedAtPreviousCycle = false;
     } else {
@@ -45,14 +49,26 @@ void ProcessingElement::txProcess()
 	} else
 	    transmittedAtPreviousCycle = false;
 
-
-	if (ack_tx.read() == current_level_tx) {
-	    if (!packet_queue.empty()) {
-		Flit flit = nextFlit();	// Generate a new flit
-		flit_tx->write(flit);	// Send the generated flit
-		current_level_tx = 1 - current_level_tx;	// Negate the old value for Alternating Bit Protocol (ABP)
-		req_tx.write(current_level_tx);
-	    }
+	if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),local_id)!=GlobalParams::HubLocations.end()){
+		if (ack_tx[1].read() == current_level_tx) {
+		    if (!packet_queue.empty()) {
+			Flit flit = nextFlit();	// Generate a new flit
+			flit_tx[1]->write(flit);	// Send the generated flit
+			current_level_tx = 1 - current_level_tx;	// Negate the old value for Alternating Bit Protocol (ABP)
+			req_tx[1].write(current_level_tx);
+		    }
+		}
+	}
+	else
+	{
+		if (ack_tx[0].read() == current_level_tx) {
+		    if (!packet_queue.empty()) {
+			Flit flit = nextFlit();	// Generate a new flit
+			flit_tx[0]->write(flit);	// Send the generated flit
+			current_level_tx = 1 - current_level_tx;	// Negate the old value for Alternating Bit Protocol (ABP)
+			req_tx[0].write(current_level_tx);
+		    }
+		}
 	}
     }
 }
