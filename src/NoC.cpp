@@ -47,14 +47,15 @@ void NoC::buildCommon()
 		hub[hub_id] = new Hub(hub_name, hub_id,token_ring);
 		hub[hub_id]->clock(clock);
 		hub[hub_id]->reset(reset);
-
+		
+		//GlobalParams::hasHub[hub_config.location] = true;
 
 		// Determine, from configuration file, which Hub is connected to which Tile
 		for(vector<int>::iterator iit = hub_config.attachedNodes.begin();
 			iit != hub_config.attachedNodes.end();
 			++iit)
 		{
-			GlobalParams::hub_for_tile[*iit] = hub_id;
+			GlobalParams::hub_for_tile[*iit].push_back(hub_id);
 			//LOG<<"I am hub "<<hub_id<<" and I amconnecting to "<<*iit<<endl;
 
 		}
@@ -2269,6 +2270,14 @@ void NoC::buildMesh()
 	    t[i][j]->hub_ack_tx(ack[i][j].from_hub);
 	    t[i][j]->hub_buffer_full_status_tx(buffer_full_status[i][j].from_hub);
 
+	    // important: delete the router when the tile has hub
+	    if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),tile_id)!=GlobalParams::HubLocations.end())
+	    	delete t[i][j]->r;
+	    
+	    // clear signals for hub attached nodes towards the Hub-tile PE(if needed)
+    	    
+	    
+	    
         // TODO: Review port index. Connect each Hub to all its Channels 
         map<int, int>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
         if (it != GlobalParams::hub_for_tile.end())
@@ -2357,6 +2366,8 @@ void NoC::buildMesh()
 	nop_data[GlobalParams::mesh_dim_x][j].west.write(tmp_NoP);
 
     }
+    
+    
 
 }
 

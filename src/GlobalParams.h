@@ -97,6 +97,7 @@ typedef struct {
 } ChannelConfig;
 
 typedef struct {
+    int location;
     vector<int> attachedNodes;
     vector<int> rxChannels;
     vector<int> txChannels;
@@ -163,6 +164,7 @@ struct GlobalParams {
     static string routing_algorithm;
     static string routing_table_filename;
     static string selection_strategy;
+    //static unordered_map<int,bool> hasHub;
     static vector<int> HubLocations;
     static double packet_injection_rate;
     static double probability_of_retransmission;
@@ -189,7 +191,7 @@ struct GlobalParams {
     static map<int, ChannelConfig> channel_configuration;
     static HubConfig default_hub_configuration;
     static map<int, HubConfig> hub_configuration;
-    static map<int, int> hub_for_tile;
+    static map<int, vector<int>> hub_for_tile;
     static PowerConfig power_configuration;
     static int subnetsz;
     static vector<nearestHub> nearestHubs;

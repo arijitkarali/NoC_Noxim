@@ -47,6 +47,7 @@ bool GlobalParams::detailed;
 double GlobalParams::dyad_threshold;
 unsigned int GlobalParams::max_volume_to_be_drained;
 vector <pair <int, double> > GlobalParams::hotspots;
+//unordered_map<int,bool> GlobalParams::hasHub;
 vector<int> GlobalParams::HubLocations;
 bool GlobalParams::show_buffer_stats;
 bool GlobalParams::use_winoc;

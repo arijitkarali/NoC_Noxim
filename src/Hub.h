@@ -21,6 +21,7 @@
 #include "Target.h"
 #include "TokenRing.h"
 #include "Power.h"
+#include "Stats.h"
 
 using namespace std;
 
@@ -54,6 +55,7 @@ SC_MODULE(Hub)
     bool* current_level_rx;	// Current level for ABP
     bool* current_level_tx;	// Current level for ABP
 
+    Stats stats;
 
     map<int, sc_in<int>* > current_token_holder;
     map<int, sc_in<int>* > current_token_expiration;
@@ -71,6 +73,7 @@ SC_MODULE(Hub)
 
     ReservationTable antenna2tile_reservation_table;	// Switch reservation table
     ReservationTable tile2antenna_reservation_table;// Wireless reservation table
+    ReservationTable reservation_table; //reservation for wired delivery
 
     void updateRxPower();
     void updateTxPower();
@@ -79,6 +82,9 @@ SC_MODULE(Hub)
 
     int route(Flit&);
     int tile2Port(int);
+    int findRelay(int,int);
+    int subnetofNode(int);
+    int subnetofHub(int);
 
     void setFlitTransmissionCycles(int cycles,int ch_id) {flit_transmission_cycles[ch_id]=cycles;}
 
@@ -112,12 +118,13 @@ SC_MODULE(Hub)
 
         local_id = id;
 	token_ring = tr;
-        num_ports = GlobalParams::hub_configuration[local_id].attachedNodes.size();
+        num_ports = GlobalParams::hub_configuration[local_id].attachedNodes.size()+1; // 4 neighbour + 1 local
         attachedNodes = GlobalParams::hub_configuration[local_id].attachedNodes;
         rxChannels = GlobalParams::hub_configuration[local_id].rxChannels;
         txChannels = GlobalParams::hub_configuration[local_id].txChannels;
 
 	antenna2tile_reservation_table.setSize(num_ports);
+	reservation_table.setSize(num_ports);
 	// fix this
 	//tile2antenna_reservation_table.setSize(txChannels.size());
 #define STATIC_MAX_CHANNELS 100

@@ -16,25 +16,59 @@ int Hub::tile2Port(int id)
 	return tile2port_mapping.at(id);
 }
 
+int Hub::findRelay(int local_id,int dstId)
+{
+	int loc = GlobalParams::hub_configuration[local_id].location;
+	int src_x,src_y,dst_x,dst_y;
+	
+	src_x = loc % GlobalParams::mesh_dim_x;
+	src_y = loc / GlobalParams::mesh_dim_y;
+	
+	dst_x = dstId % GlobalParams::mesh_dim_x;
+	dst_y = dstId / GlobalParams::mesh_dim_y;
+	if(src_x != dst_x)
+	{
+		if(src_x < dst_x) return tile2Port(local_id+1);
+		else return tile2Port(local_id-1);
+	}
+	else
+	{
+		if(src_y < dst_y) return tile2Port(local_id + GlobalParams::mesh_dim_x);
+		else return tile2Port(local_id - GlobalParams::mesh_dim_x);
+	}
+}
+
+int Hub::subnetofNode(int NodeID)
+{
+	return 2*((NodeID/GlobalParams::mesh_dim_x)/GlobalParams::subnetsz) + (NodeID%8)/GlobalParams::subnetsz;
+}
+
+int Hub::subnetofHub(int HubID)
+{
+	return HubID/2;
+}
+
 int Hub::route(Flit& f)
 {
 	// check if it is a local delivery
-	/*for (vector<int>::size_type i=0; i< GlobalParams::hub_configuration[local_id].attachedNodes.size();i++)
+	int loc = GlobalParams::hub_configuration[local_id].location;
+	
+	if(loc == f.dst_id) return DIRECTION_LOCAL;
+	
+	if(subnetofNode(f.dst_id) == subnetofHub(local_id))
 	{
-		// ...to a destination which is connected to the Hub
-		if (GlobalParams::hub_configuration[local_id].attachedNodes[i]==f.dst_id)
+		for (vector<int>::size_type i=0; i< GlobalParams::hub_configuration[local_id].attachedNodes.size();i++)
 		{
-			return tile2Port(f.dst_id);
+			// ...to a destination which is connected to the Hub
+			if (GlobalParams::hub_configuration[local_id].attachedNodes[i]==f.dst_id)
+			{
+				return tile2Port(f.dst_id);
+			}
+			
+			// ...or the destination is not directly connected then forward it to a relay tile
+			return findRelay(local_id,f.dst_id);
 		}
-		// ...or to a relay which is locally connected to the Hub
-		if (GlobalParams::hub_configuration[local_id].attachedNodes[i]==f.hub_relay_node)
-		{
-			assert(GlobalParams::winoc_dst_hops>0);
-			return tile2Port(f.hub_relay_node);
-		}
-
-	}*/
-	if(local_id == f.dst_id) return DIRECTION_LOCAL;
+	}
 	return DIRECTION_WIRELESS;
 
 }
@@ -303,7 +337,7 @@ void Hub::antennaToTileProcess()
 
 					buffer_to_tile[i][vc].Pop();
 					power.bufferToTilePop();
-					power.r2hLink();
+					if(i != DIRECTION_LOCAL) power.r2hLink();
 					break; // port flit transmitted, skip remaining VCs
 				}
 				else
@@ -498,54 +532,83 @@ void Hub::tileToAntennaProcess()
 
 				power.bufferFromTileFront();
 				r_from_tile[i][vc] = route(flit);
-
-				if (flit.flit_type == FLIT_TYPE_HEAD)
+				
+				if(r_from_tile[i][vc]==DIRECTION_WIRELESS)
 				{
-					TReservation r;
-					r.input = i;
-					r.vc = vc;
-					
-					//if the flit to be sent takes wired hop
-					//assert(r_from_tile[i][vc]==DIRECTION_LOCAL);
-					
-					
-					
-					//if the flit to be sent takes wireless hop
-					
-					assert(r_from_tile[i][vc]==DIRECTION_WIRELESS);
-					int channel;
-
-					if (flit.hub_relay_node==NOT_VALID)
-						channel = selectChannel(local_id, tile2Hub(flit.dst_id));
-					else
-						channel = selectChannel(local_id, tile2Hub(flit.hub_relay_node));
-
-
-					assert(channel!=NOT_VALID && "hubs are not connected by any channel");
-
-					LOG << "Checking reservation availability of Channel " << channel << " by Hub port[" << i << "][" << vc << "] for flit " << flit << endl;
-
-					int rt_status = tile2antenna_reservation_table.checkReservation(r,channel);
-
-					if (rt_status == RT_AVAILABLE)
+					if (flit.flit_type == FLIT_TYPE_HEAD)
 					{
-						LOG << "Reservation of channel " << channel << " from Hub port["<< i << "]["<<vc<<"] by flit " << flit << endl;
-						tile2antenna_reservation_table.reserve(r, channel);
+						TReservation r;
+						r.input = i;
+						r.vc = vc;
+						
+						assert(r_from_tile[i][vc]==DIRECTION_WIRELESS);
+						int channel;
+
+						if (flit.hub_relay_node==NOT_VALID)
+							channel = selectChannel(local_id, tile2Hub(flit.dst_id));
+						else
+							channel = selectChannel(local_id, tile2Hub(flit.hub_relay_node));
+
+
+						assert(channel!=NOT_VALID && "hubs are not connected by any channel");
+
+						LOG << "Checking reservation availability of Channel " << channel << " by Hub port[" << i << "][" << vc << "] for flit " << flit << endl;
+
+						int rt_status = tile2antenna_reservation_table.checkReservation(r,channel);
+
+						if (rt_status == RT_AVAILABLE)
+						{
+							LOG << "Reservation of channel " << channel << " from Hub port["<< i << "]["<<vc<<"] by flit " << flit << endl;
+							tile2antenna_reservation_table.reserve(r, channel);
+						}
+						else if (rt_status == RT_ALREADY_SAME)
+						{
+							LOG << "RT_ALREADY_SAME reserved channel " << channel << " for flit " << flit << endl;
+						}
+						else if (rt_status == RT_OUTVC_BUSY)
+						{
+							LOG << "RT_OUTVC_BUSY reservation for channel " << channel << " for flit " << flit << endl;
+						}
+						else if (rt_status == RT_ALREADY_OTHER_OUT)
+						{
+							LOG << "RT_ALREADY_OTHER_OUT a channel different from " << channel << " already reserved by Hub port["<< i << "]["<<vc<<"]" << endl;
+						}
+						else assert(false); // no meaningful status here
 					}
-					else if (rt_status == RT_ALREADY_SAME)
-					{
-						LOG << "RT_ALREADY_SAME reserved channel " << channel << " for flit " << flit << endl;
-					}
-					else if (rt_status == RT_OUTVC_BUSY)
-					{
-						LOG << "RT_OUTVC_BUSY reservation for channel " << channel << " for flit " << flit << endl;
-					}
-					else if (rt_status == RT_ALREADY_OTHER_OUT)
-					{
-						LOG << "RT_ALREADY_OTHER_OUT a channel different from " << channel << " already reserved by Hub port["<< i << "]["<<vc<<"]" << endl;
-					}
-					else assert(false); // no meaningful status here
 				}
+				
+				if(r_from_tile[i][vc] <= 4) // local or adjacents i.e. NSEWL
+				{
+					// get reservation for wired port delivery
+					TReservation r;
+				      r.input = i;
+				      r.vc = vc;
+				      int o = r_from_tile[i][vc];
+					
+				      LOG << " checking availability of Output[" << o << "] for Input[" << i << "][" << vc << "] flit " << flit << endl;
+
+				      int rt_status = reservation_table.checkReservation(r,o);
+
+				      if (rt_status == RT_AVAILABLE) 
+				      {
+					  LOG << " reserving direction " << o << " for flit " << flit << endl;
+					  reservation_table.reserve(r, o);
+				      }
+				      else if (rt_status == RT_ALREADY_SAME)
+				      {
+					  LOG << " RT_ALREADY_SAME reserved direction " << o << " for flit " << flit << endl;
+				      }
+				      else if (rt_status == RT_OUTVC_BUSY)
+				      {
+					  LOG << " RT_OUTVC_BUSY reservation direction " << o << " for flit " << flit << endl;
+				      }
+				      else if (rt_status == RT_ALREADY_OTHER_OUT)
+				      {
+					  LOG  << "RT_ALREADY_OTHER_OUT: another output previously reserved for the same flit " << endl;
+				      }
+				      else assert(false); // no meaningful status here
+				}
+				
 			}
 		}
 		start_from_vc[i] = (start_from_vc[i]+1)%GlobalParams::n_virtual_channels;
@@ -557,6 +620,7 @@ void Hub::tileToAntennaProcess()
 	// 2nd phase: Forwarding
 	for (int i = 0; i < num_ports; i++)
 	{
+		
 		vector<pair<int,int> > reservations = tile2antenna_reservation_table.getReservations(i);
 
 		if (reservations.size()!=0)
@@ -565,47 +629,91 @@ void Hub::tileToAntennaProcess()
 
 			int o = reservations[rnd_idx].first;
 			int vc = reservations[rnd_idx].second;
-
-			if (!buffer_from_tile[i][vc].IsEmpty())
+			
+			if(r_from_tile[i][vc] == DIRECTION_WIRELESS)
 			{
-				Flit flit = buffer_from_tile[i][vc].Front();
-				// powerFront already accounted in 1st phase
-
-				assert(r_from_tile[i][vc] == DIRECTION_WIRELESS);
-
-				int channel =  o;
-
-				if (channel != NOT_RESERVED)
+				if (!buffer_from_tile[i][vc].IsEmpty())
 				{
-					if (!(init[channel]->buffer_tx.IsFull()) )
-					{
-						buffer_from_tile[i][vc].Pop();
-						power.bufferFromTilePop();
-						init[channel]->buffer_tx.Push(flit);
-						power.antennaBufferPush();
-						if (flit.flit_type == FLIT_TYPE_TAIL)
-						{
-							TReservation r;
-							r.input = i;
-							r.vc = vc;
-							tile2antenna_reservation_table.release(r,channel);
-						}
+					Flit flit = buffer_from_tile[i][vc].Front();
+					// powerFront already accounted in 1st phase
 
-						LOG << "Flit " << flit << " moved from buffer_from_tile["<<i<<"]["<<vc<<"]  to buffer_tx["<<channel<<"] " << endl;
+					int channel =  o;
+
+					if (channel != NOT_RESERVED)
+					{
+						if (!(init[channel]->buffer_tx.IsFull()) )
+						{
+							buffer_from_tile[i][vc].Pop();
+							power.bufferFromTilePop();
+							init[channel]->buffer_tx.Push(flit);
+							power.antennaBufferPush();
+							if (flit.flit_type == FLIT_TYPE_TAIL)
+							{
+								TReservation r;
+								r.input = i;
+								r.vc = vc;
+								tile2antenna_reservation_table.release(r,channel);
+							}
+
+							LOG << "Flit " << flit << " moved from buffer_from_tile["<<i<<"]["<<vc<<"]  to buffer_tx["<<channel<<"] " << endl;
+						}
+						else
+						{
+							LOG << "Buffer Full: Cannot move flit " << flit << " from buffer_from_tile["<<i<<"] to buffer_tx["<<channel<<"] " << endl;
+							//init[channel]->buffer_tx.Print();
+						}
 					}
 					else
 					{
-						LOG << "Buffer Full: Cannot move flit " << flit << " from buffer_from_tile["<<i<<"] to buffer_tx["<<channel<<"] " << endl;
-						//init[channel]->buffer_tx.Print();
+						LOG << "Forwarding: No channel reserved for input port [" << i << "][" << vc << "], flit " << flit << endl;
 					}
 				}
-				else
-				{
-					LOG << "Forwarding: No channel reserved for input port [" << i << "][" << vc << "], flit " << flit << endl;
-				}
-			}
 
-		}// for all the ports
+			}// for all the ports
+			
+		if(r_from_tile[i][vc] <= 4) // local or adjacents i.e. NSEWL
+		{
+			// forward to adjacents
+			
+		      if (!buffer_from_tile[i][vc].IsEmpty())  
+		      {
+			  // power contribution already computed in 1st phase
+			  Flit flit = buffer_from_tile[i][vc].Front();
+			  //LOG<< "*****TX***Direction= "<<i<< "************"<<endl;
+			  //LOG<<"_cl_tx="<<current_level_tx[o]<<"req_tx="<<req_tx[o].read()<<" _ack= "<<ack_tx[o].read()<< endl;
+			  
+			  if ( (current_level_tx[o] == ack_tx[o].read()) &&
+			       (buffer_full_status_tx[o].read().mask[vc] == false) ) 
+			  {
+			      //if (GlobalParams::verbose_mode > VERBOSE_OFF) 
+			      LOG << "Input[" << i << "][" << vc << "] forwarded to Output[" << o << "], flit: " << flit << endl;
+
+			      flit_tx[o].write(flit);
+			      current_level_tx[o] = 1 - current_level_tx[o];
+			      req_tx[o].write(current_level_tx[o]);
+			      buffer_from_tile[i][vc].Pop();
+
+			      if (flit.flit_type == FLIT_TYPE_TAIL)
+			      {
+				  TReservation r;
+				  r.input = i;
+				  r.vc = vc;
+				  reservation_table.release(r,o);
+			      }
+			      power.bufferRouterPop();
+		      	      power.crossBar();
+		      	      
+		      	      if (o == DIRECTION_LOCAL) 
+			      {
+				  power.networkInterface();
+				  LOG << "Consumed flit " << flit << endl;
+				  stats.receivedFlit(sc_time_stamp().to_double() / GlobalParams::clock_period_ps, flit);
+			      } 
+			   }
+		      }
+		   }
+		}
+		
 	}
 
 	for (int i = 0; i < num_ports; i++)
