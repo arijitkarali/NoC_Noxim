@@ -226,27 +226,29 @@ void NoC::buildButterfly()
 
 			//assert(false);
 			// TODO: Review port index. Connect each Hub to all its Channels
-			map<int, int>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
+			map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
 			if (it != GlobalParams::hub_for_tile.end())
 			{
-				int hub_id = GlobalParams::hub_for_tile[tile_id];
+				for(int hub_id : it->second)
+				{
+					//int hub_id = GlobalParams::hub_for_tile[tile_id];
 
-				// The next time that the same HUB is considered, the next
-				// port will be connected
-				int port = hub_connected_ports[hub_id]++;
+					// The next time that the same HUB is considered, the next
+					// port will be connected
+					int port = hub_connected_ports[hub_id]++;
 
-				hub[hub_id]->tile2port_mapping[t[i][j]->local_id] = port;
+					hub[hub_id]->tile2port_mapping[t[i][j]->local_id] = port;
 
-				hub[hub_id]->req_rx[port](req[i][j].to_hub);
-				hub[hub_id]->flit_rx[port](flit[i][j].to_hub);
-				hub[hub_id]->ack_rx[port](ack[i][j].from_hub);
-				hub[hub_id]->buffer_full_status_rx[port](buffer_full_status[i][j].from_hub);
+					hub[hub_id]->req_rx[port](req[i][j].to_hub);
+					hub[hub_id]->flit_rx[port](flit[i][j].to_hub);
+					hub[hub_id]->ack_rx[port](ack[i][j].from_hub);
+					hub[hub_id]->buffer_full_status_rx[port](buffer_full_status[i][j].from_hub);
 
-				hub[hub_id]->flit_tx[port](flit[i][j].from_hub);
-				hub[hub_id]->req_tx[port](req[i][j].from_hub);
-				hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
-				hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
-
+					hub[hub_id]->flit_tx[port](flit[i][j].from_hub);
+					hub[hub_id]->req_tx[port](req[i][j].from_hub);
+					hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
+					hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
+				}
 			}
 
 		}
@@ -549,28 +551,30 @@ void NoC::buildButterfly()
 		// TODO: Review port index. Connect each Hub to all its Channels // connect Hub2Core
 		//for (map<int, int>::iterator it1 = GlobalParams::hub_for_tile.begin(); it1 != GlobalParams::hub_for_tile.end(); it1++ )
 		//LOG<<"it1 first "<< it1->first<< "second"<< it1->second<<endl;
-		map<int, int>::iterator it = GlobalParams::hub_for_tile.find(core_id);
+		map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(core_id);
 		if (it != GlobalParams::hub_for_tile.end())
 		{
-			int hub_id = GlobalParams::hub_for_tile[core_id];
+			for(int hub_id : it->second)
+			{
+				//int hub_id = GlobalParams::hub_for_tile[core_id];
 
 
-			// The next time that the same HUB is considered, the next
-			// port will be connected
-			int port = hub_connected_ports[hub_id]++;
-			//LOG<<"I am hub "<<hub_id<<" connecting to core "<<core_id<<"using port "<<port<<endl;
-			hub[hub_id]->tile2port_mapping[core[i]->local_id] = port;
+				// The next time that the same HUB is considered, the next
+				// port will be connected
+				int port = hub_connected_ports[hub_id]++;
+				//LOG<<"I am hub "<<hub_id<<" connecting to core "<<core_id<<"using port "<<port<<endl;
+				hub[hub_id]->tile2port_mapping[core[i]->local_id] = port;
 
-			hub[hub_id]->req_rx[port](req_to_hub[core_id]);
-			hub[hub_id]->flit_rx[port](flit_to_hub[core_id]);
-			hub[hub_id]->ack_rx[port](ack_from_hub[core_id]);
-			hub[hub_id]->buffer_full_status_rx[port](buffer_full_status_from_hub[core_id]);
+				hub[hub_id]->req_rx[port](req_to_hub[core_id]);
+				hub[hub_id]->flit_rx[port](flit_to_hub[core_id]);
+				hub[hub_id]->ack_rx[port](ack_from_hub[core_id]);
+				hub[hub_id]->buffer_full_status_rx[port](buffer_full_status_from_hub[core_id]);
 
-			hub[hub_id]->flit_tx[port](flit_from_hub[core_id]);
-			hub[hub_id]->req_tx[port](req_from_hub[core_id]);
-			hub[hub_id]->ack_tx[port](ack_to_hub[core_id]);
-			hub[hub_id]->buffer_full_status_tx[port](buffer_full_status_to_hub[core_id]);
-
+				hub[hub_id]->flit_tx[port](flit_from_hub[core_id]);
+				hub[hub_id]->req_tx[port](req_from_hub[core_id]);
+				hub[hub_id]->ack_tx[port](ack_to_hub[core_id]);
+				hub[hub_id]->buffer_full_status_tx[port](buffer_full_status_to_hub[core_id]);
+			}
 		}
 
 
@@ -876,27 +880,29 @@ void NoC::buildBaseline()
 	    t[i][j]->hub_buffer_full_status_tx(buffer_full_status[i][j].from_hub);
 
 	    // TODO: Review port index. Connect each Hub to all its Channels 
-	    map<int, int>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
+	    map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
 	    if (it != GlobalParams::hub_for_tile.end())
 	    {
-		int hub_id = GlobalParams::hub_for_tile[tile_id];
+	    	for(int hub_id : it->second)
+		{
+			//int hub_id = GlobalParams::hub_for_tile[tile_id];
 
-		// The next time that the same HUB is considered, the next
-		// port will be connected
-		int port = hub_connected_ports[hub_id]++;
+			// The next time that the same HUB is considered, the next
+			// port will be connected
+			int port = hub_connected_ports[hub_id]++;
 
-		hub[hub_id]->tile2port_mapping[t[i][j]->local_id] = port;
+			hub[hub_id]->tile2port_mapping[t[i][j]->local_id] = port;
 
-		hub[hub_id]->req_rx[port](req[i][j].to_hub);
-		hub[hub_id]->flit_rx[port](flit[i][j].to_hub);
-		hub[hub_id]->ack_rx[port](ack[i][j].from_hub);
-		hub[hub_id]->buffer_full_status_rx[port](buffer_full_status[i][j].from_hub);
+			hub[hub_id]->req_rx[port](req[i][j].to_hub);
+			hub[hub_id]->flit_rx[port](flit[i][j].to_hub);
+			hub[hub_id]->ack_rx[port](ack[i][j].from_hub);
+			hub[hub_id]->buffer_full_status_rx[port](buffer_full_status[i][j].from_hub);
 
-		hub[hub_id]->flit_tx[port](flit[i][j].from_hub);
-		hub[hub_id]->req_tx[port](req[i][j].from_hub);
-		hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
-		hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
-
+			hub[hub_id]->flit_tx[port](flit[i][j].from_hub);
+			hub[hub_id]->req_tx[port](req[i][j].from_hub);
+			hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
+			hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
+		}
 	    }
 
 	}
@@ -1308,28 +1314,30 @@ void NoC::buildBaseline()
 	core[i]->reset(reset);
 
 	//NEW feauture: Hub2tile 
-	    map<int, int>::iterator it = GlobalParams::hub_for_tile.find(core_id);
+	    map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(core_id);
 		if (it != GlobalParams::hub_for_tile.end())
 		{
-			int hub_id = GlobalParams::hub_for_tile[core_id];
+			for(int hub_id : it->second)
+			{
+				//int hub_id = GlobalParams::hub_for_tile[core_id];
 
 
-			// The next time that the same HUB is considered, the next
-			// port will be connected
-			int port = hub_connected_ports[hub_id]++;
-			//LOG<<"I am hub "<<hub_id<<" connecting to core "<<core_id<<"using port "<<port<<endl;
-			hub[hub_id]->tile2port_mapping[core[i]->local_id] = port;
+				// The next time that the same HUB is considered, the next
+				// port will be connected
+				int port = hub_connected_ports[hub_id]++;
+				//LOG<<"I am hub "<<hub_id<<" connecting to core "<<core_id<<"using port "<<port<<endl;
+				hub[hub_id]->tile2port_mapping[core[i]->local_id] = port;
 
-			hub[hub_id]->req_rx[port](req_to_hub[core_id]);
-			hub[hub_id]->flit_rx[port](flit_to_hub[core_id]);
-			hub[hub_id]->ack_rx[port](ack_from_hub[core_id]);
-			hub[hub_id]->buffer_full_status_rx[port](buffer_full_status_from_hub[core_id]);
+				hub[hub_id]->req_rx[port](req_to_hub[core_id]);
+				hub[hub_id]->flit_rx[port](flit_to_hub[core_id]);
+				hub[hub_id]->ack_rx[port](ack_from_hub[core_id]);
+				hub[hub_id]->buffer_full_status_rx[port](buffer_full_status_from_hub[core_id]);
 
-			hub[hub_id]->flit_tx[port](flit_from_hub[core_id]);
-			hub[hub_id]->req_tx[port](req_from_hub[core_id]);
-			hub[hub_id]->ack_tx[port](ack_to_hub[core_id]);
-			hub[hub_id]->buffer_full_status_tx[port](buffer_full_status_to_hub[core_id]);
-
+				hub[hub_id]->flit_tx[port](flit_from_hub[core_id]);
+				hub[hub_id]->req_tx[port](req_from_hub[core_id]);
+				hub[hub_id]->ack_tx[port](ack_to_hub[core_id]);
+				hub[hub_id]->buffer_full_status_tx[port](buffer_full_status_to_hub[core_id]);
+			}
 		}
 
     } 
@@ -1606,27 +1614,29 @@ void NoC::buildOmega()
 			t[i][j]->hub_buffer_full_status_tx(buffer_full_status[i][j].from_hub);
 
 			// TODO: Review port index. Connect each Hub to all its Channels
-			map<int, int>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
+			map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
 			if (it != GlobalParams::hub_for_tile.end())
 			{
-				int hub_id = GlobalParams::hub_for_tile[tile_id];
+				for(int hub_id : it->second)
+				{
+					//int hub_id = GlobalParams::hub_for_tile[tile_id];
 
-				// The next time that the same HUB is considered, the next
-				// port will be connected
-				int port = hub_connected_ports[hub_id]++;
+					// The next time that the same HUB is considered, the next
+					// port will be connected
+					int port = hub_connected_ports[hub_id]++;
 
-				hub[hub_id]->tile2port_mapping[t[i][j]->local_id] = port;
+					hub[hub_id]->tile2port_mapping[t[i][j]->local_id] = port;
 
-				hub[hub_id]->req_rx[port](req[i][j].to_hub);
-				hub[hub_id]->flit_rx[port](flit[i][j].to_hub);
-				hub[hub_id]->ack_rx[port](ack[i][j].from_hub);
-				hub[hub_id]->buffer_full_status_rx[port](buffer_full_status[i][j].from_hub);
+					hub[hub_id]->req_rx[port](req[i][j].to_hub);
+					hub[hub_id]->flit_rx[port](flit[i][j].to_hub);
+					hub[hub_id]->ack_rx[port](ack[i][j].from_hub);
+					hub[hub_id]->buffer_full_status_rx[port](buffer_full_status[i][j].from_hub);
 
-				hub[hub_id]->flit_tx[port](flit[i][j].from_hub);
-				hub[hub_id]->req_tx[port](req[i][j].from_hub);
-				hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
-				hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
-
+					hub[hub_id]->flit_tx[port](flit[i][j].from_hub);
+					hub[hub_id]->req_tx[port](req[i][j].from_hub);
+					hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
+					hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
+				}
 			}
 
 		}
@@ -1938,28 +1948,30 @@ void NoC::buildOmega()
 		core[i]->reset(reset);
 
 		//NEW feauture: Hub2tile 
-	    map<int, int>::iterator it = GlobalParams::hub_for_tile.find(core_id);
+	    map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(core_id);
 		if (it != GlobalParams::hub_for_tile.end())
 		{
-			int hub_id = GlobalParams::hub_for_tile[core_id];
+			for(int hub_id : it->second)
+			{
+				//int hub_id = GlobalParams::hub_for_tile[core_id];
 
 
-			// The next time that the same HUB is considered, the next
-			// port will be connected
-			int port = hub_connected_ports[hub_id]++;
-			//LOG<<"I am hub "<<hub_id<<" connecting to core "<<core_id<<"using port "<<port<<endl;
-			hub[hub_id]->tile2port_mapping[core[i]->local_id] = port;
+				// The next time that the same HUB is considered, the next
+				// port will be connected
+				int port = hub_connected_ports[hub_id]++;
+				//LOG<<"I am hub "<<hub_id<<" connecting to core "<<core_id<<"using port "<<port<<endl;
+				hub[hub_id]->tile2port_mapping[core[i]->local_id] = port;
 
-			hub[hub_id]->req_rx[port](req_to_hub[core_id]);
-			hub[hub_id]->flit_rx[port](flit_to_hub[core_id]);
-			hub[hub_id]->ack_rx[port](ack_from_hub[core_id]);
-			hub[hub_id]->buffer_full_status_rx[port](buffer_full_status_from_hub[core_id]);
+				hub[hub_id]->req_rx[port](req_to_hub[core_id]);
+				hub[hub_id]->flit_rx[port](flit_to_hub[core_id]);
+				hub[hub_id]->ack_rx[port](ack_from_hub[core_id]);
+				hub[hub_id]->buffer_full_status_rx[port](buffer_full_status_from_hub[core_id]);
 
-			hub[hub_id]->flit_tx[port](flit_from_hub[core_id]);
-			hub[hub_id]->req_tx[port](req_from_hub[core_id]);
-			hub[hub_id]->ack_tx[port](ack_to_hub[core_id]);
-			hub[hub_id]->buffer_full_status_tx[port](buffer_full_status_to_hub[core_id]);
-
+				hub[hub_id]->flit_tx[port](flit_from_hub[core_id]);
+				hub[hub_id]->req_tx[port](req_from_hub[core_id]);
+				hub[hub_id]->ack_tx[port](ack_to_hub[core_id]);
+				hub[hub_id]->buffer_full_status_tx[port](buffer_full_status_to_hub[core_id]);
+			}
 		}
 		
 	} //-------------------------------------end core comment---------------------------------
@@ -2279,26 +2291,29 @@ void NoC::buildMesh()
 	    
 	    
         // TODO: Review port index. Connect each Hub to all its Channels 
-        map<int, int>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
+        map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
         if (it != GlobalParams::hub_for_tile.end())
         {
-            int hub_id = GlobalParams::hub_for_tile[tile_id];
+            for(int hub_id : it->second)
+            {
+		    //int hub_id = GlobalParams::hub_for_tile[tile_id];
 
-            // The next time that the same HUB is considered, the next
-            // port will be connected
-            int port = hub_connected_ports[hub_id]++;
+		    // The next time that the same HUB is considered, the next
+		    // port will be connected
+		    int port = hub_connected_ports[hub_id]++;
 
-            hub[hub_id]->tile2port_mapping[t[i][j]->local_id] = port;
+		    hub[hub_id]->tile2port_mapping[t[i][j]->local_id] = port;
 
-            hub[hub_id]->req_rx[port](req[i][j].to_hub);
-            hub[hub_id]->flit_rx[port](flit[i][j].to_hub);
-            hub[hub_id]->ack_rx[port](ack[i][j].from_hub);
-            hub[hub_id]->buffer_full_status_rx[port](buffer_full_status[i][j].from_hub);
+		    hub[hub_id]->req_rx[port](req[i][j].to_hub);
+		    hub[hub_id]->flit_rx[port](flit[i][j].to_hub);
+		    hub[hub_id]->ack_rx[port](ack[i][j].from_hub);
+		    hub[hub_id]->buffer_full_status_rx[port](buffer_full_status[i][j].from_hub);
 
-            hub[hub_id]->flit_tx[port](flit[i][j].from_hub);
-            hub[hub_id]->req_tx[port](req[i][j].from_hub);
-            hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
-            hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
+		    hub[hub_id]->flit_tx[port](flit[i][j].from_hub);
+		    hub[hub_id]->req_tx[port](req[i][j].from_hub);
+		    hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
+		    hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
+            }
         }
 
         // Map buffer level signals (analogy with req_tx/rx port mapping)
@@ -2367,7 +2382,7 @@ void NoC::buildMesh()
 
     }
     
-    
+    //cout << "NoC works" << endl;
 
 }
 

@@ -211,8 +211,8 @@ inline int coord2Id(const Coord & coord)
 
 inline bool sameRadioHub(int id1, int id2)
 {
-    map<int, int>::iterator it1 = GlobalParams::hub_for_tile.find(id1); 
-    map<int, int>::iterator it2 = GlobalParams::hub_for_tile.find(id2); 
+    map<int, vector<int>>::iterator it1 = GlobalParams::hub_for_tile.find(id1); 
+    map<int, vector<int>>::iterator it2 = GlobalParams::hub_for_tile.find(id2); 
 
     assert( (it1 != GlobalParams::hub_for_tile.end()) && "Specified Tile is not connected to any Hub");
     assert( (it2 != GlobalParams::hub_for_tile.end()) && "Specified Tile is not connected to any Hub");
@@ -222,7 +222,7 @@ inline bool sameRadioHub(int id1, int id2)
 
 inline bool hasRadioHub(int id)
 {
-    map<int, int>::iterator it = GlobalParams::hub_for_tile.find(id);
+    map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(id);
 
     return (it != GlobalParams::hub_for_tile.end());
 }
@@ -230,9 +230,9 @@ inline bool hasRadioHub(int id)
 
 inline int tile2Hub(int id)
 {
-    map<int, int>::iterator it = GlobalParams::hub_for_tile.find(id); 
+    map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(id); 
     assert( (it != GlobalParams::hub_for_tile.end()) && "Specified Tile is not connected to any Hub");
-    return it->second;
+    return it->second[rand() % it->second.size()];
 }
 
 

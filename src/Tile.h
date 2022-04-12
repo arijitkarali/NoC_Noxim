@@ -162,7 +162,7 @@ SC_MODULE(Tile)
 	r->free_slots[DIRECTION_LOCAL] (free_slots_local);
 	r->free_slots_neighbor[DIRECTION_LOCAL] (free_slots_neighbor_local);
 	pe->free_slots_neighbor(free_slots_neighbor_local);
-
+	//cout << "tile works" << endl;
     }
 
 };

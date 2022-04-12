@@ -92,7 +92,7 @@ void loadConfiguration() {
     GlobalParams::use_winoc = readParam<bool>(config, "use_winoc");
     GlobalParams::winoc_dst_hops = readParam<int>(config, "winoc_dst_hops",0);
     GlobalParams::use_powermanager = readParam<bool>(config, "use_wirxsleep");
-    GlobalParams::HubLocations = readParam<vector<int>>(config, "Hublocations");  
+    //GlobalParams::HubLocations = readParam<vector<int>>(config, "Hublocations");  
 
     set<int> channelSet;
 
@@ -109,6 +109,7 @@ void loadConfiguration() {
         YAML::Node hub_config_node = hubs_it->second;
 
         GlobalParams::hub_configuration[hub_id] = hub_config_node.as<HubConfig>();
+        GlobalParams::HubLocations.push_back(GlobalParams::hub_configuration[hub_id].location);
 
         copy(GlobalParams::hub_configuration[hub_id].rxChannels.begin(), GlobalParams::hub_configuration[hub_id].rxChannels.end(), inserter(channelSet, channelSet.end()));
         copy(GlobalParams::hub_configuration[hub_id].txChannels.begin(), GlobalParams::hub_configuration[hub_id].txChannels.end(), inserter(channelSet, channelSet.end()));

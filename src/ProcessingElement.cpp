@@ -18,27 +18,46 @@ int ProcessingElement::randInt(int min, int max)
 
 void ProcessingElement::rxProcess()
 {
-    if (reset.read()) {
-    	if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),local_id)!=GlobalParams::HubLocations.end())
-		ack_rx[1].write(0);
-	else ack_rx[0].write(0);
-	current_level_rx = 0;	
-    } else {
-	if (req_rx[0].read() == 1 - current_level_rx) {
-	    Flit flit_tmp = flit_rx[0].read();
-	    current_level_rx = 1 - current_level_rx;	// Negate the old value for Alternating Bit Protocol (ABP)
+	if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),local_id)!=GlobalParams::HubLocations.end())
+	{
+		if (reset.read()) {
+			ack_rx[1].write(0);
+			current_level_rx[1] = 0;
+    		} else {
+			if (req_rx[1].read() == 1 - current_level_rx[1]) {
+	    			Flit flit_tmp = flit_rx[1].read();
+	    			current_level_rx[1] = 1 - current_level_rx[1];	// Negate the old value for Alternating Bit Protocol (ABP)
+			}
+			ack_rx[1].write(current_level_rx[1]);
+    		}
 	}
-	ack_rx[0].write(current_level_rx);
-    }
+	else
+	{
+		if (reset.read()) {
+			ack_rx[0].write(0);
+			current_level_rx[0] = 0;
+    		} else {
+			if (req_rx[0].read() == 1 - current_level_rx[0]) {
+	    			Flit flit_tmp = flit_rx[0].read();
+	    			current_level_rx[0] = 1 - current_level_rx[0];	// Negate the old value for Alternating Bit Protocol (ABP)
+			}
+			ack_rx[0].write(current_level_rx[0]);
+    		}
+	}
 }
 
 void ProcessingElement::txProcess()
 {
     if (reset.read()) {
     	if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),local_id)!=GlobalParams::HubLocations.end())
+	{
 		req_tx[1].write(0);
-	else req_tx[0].write(0);
-	current_level_tx = 0;
+		current_level_tx[1] = 0;
+	}
+	else{
+		req_tx[0].write(0);
+		current_level_tx[0] = 0;
+	}
 	transmittedAtPreviousCycle = false;
     } else {
 	Packet packet;
@@ -50,23 +69,23 @@ void ProcessingElement::txProcess()
 	    transmittedAtPreviousCycle = false;
 
 	if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),local_id)!=GlobalParams::HubLocations.end()){
-		if (ack_tx[1].read() == current_level_tx) {
+		if (ack_tx[1].read() == current_level_tx[1]) {
 		    if (!packet_queue.empty()) {
 			Flit flit = nextFlit();	// Generate a new flit
 			flit_tx[1]->write(flit);	// Send the generated flit
-			current_level_tx = 1 - current_level_tx;	// Negate the old value for Alternating Bit Protocol (ABP)
-			req_tx[1].write(current_level_tx);
+			current_level_tx[1] = 1 - current_level_tx[1];	// Negate the old value for Alternating Bit Protocol (ABP)
+			req_tx[1].write(current_level_tx[1]);
 		    }
 		}
 	}
 	else
 	{
-		if (ack_tx[0].read() == current_level_tx) {
+		if (ack_tx[0].read() == current_level_tx[0]) {
 		    if (!packet_queue.empty()) {
 			Flit flit = nextFlit();	// Generate a new flit
 			flit_tx[0]->write(flit);	// Send the generated flit
-			current_level_tx = 1 - current_level_tx;	// Negate the old value for Alternating Bit Protocol (ABP)
-			req_tx[0].write(current_level_tx);
+			current_level_tx[0] = 1 - current_level_tx[0];	// Negate the old value for Alternating Bit Protocol (ABP)
+			req_tx[0].write(current_level_tx[0]);
 		    }
 		}
 	}

@@ -42,8 +42,8 @@ SC_MODULE(ProcessingElement)
 
     // Registers
     int local_id;		// Unique identification number
-    bool current_level_rx;	// Current level for Alternating Bit Protocol (ABP)
-    bool current_level_tx;	// Current level for Alternating Bit Protocol (ABP)
+    bool current_level_rx[2];	// Current level for Alternating Bit Protocol (ABP)
+    bool current_level_tx[2];	// Current level for Alternating Bit Protocol (ABP)
     queue < Packet > packet_queue;	// Local queue of packets
     bool transmittedAtPreviousCycle;	// Used for distributions with memory
 

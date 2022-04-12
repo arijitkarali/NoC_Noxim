@@ -93,6 +93,8 @@ void Router::rxProcess()
 void Router::txProcess()
 {
 
+  cout << "router "<< local_id <<" trying to send" << endl;
+
   if (reset.read()) 
     {
       // Clear outputs and indexes of transmitting protocol
@@ -268,7 +270,8 @@ void Router::txProcess()
 
       if ((int)(sc_time_stamp().to_double() / GlobalParams::clock_period_ps)%2==0)
 	  reservation_table.updateIndex();
-    }   
+    }
+    cout << "router "<< local_id <<" can send" << endl;  
 }
 
 NoP_data Router::getCurrentNoPData()
@@ -408,10 +411,12 @@ vector < int > Router::routingFunction(const RouteData & route_data)
 			if ( hasRadioHub(route_data.dst_id) &&
 				 !sameRadioHub(local_id,route_data.dst_id) )
 			{
-                map<int, int>::iterator it1 = GlobalParams::hub_for_tile.find(route_data.dst_id);
-                map<int, int>::iterator it2 = GlobalParams::hub_for_tile.find(route_data.current_id);
-
-                if (connectedHubs(it1->second,it2->second))
+                map<int, vector<int>>::iterator it1 = GlobalParams::hub_for_tile.find(route_data.dst_id);
+                map<int, vector<int>>::iterator it2 = GlobalParams::hub_for_tile.find(route_data.current_id);
+		
+		int hub1 = it1->second[rand()%it1->second.size()];
+		int hub2 = it2->second[rand()%it2->second.size()];
+                if (connectedHubs(hub1,hub2))
                 {
                     LOG << "Destination node " << route_data.dst_id << " is directly connected to a reachable RadioHub" << endl;
                     vector<int> dirv;
