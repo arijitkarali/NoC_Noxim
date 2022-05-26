@@ -199,7 +199,7 @@ show_buffer_stats: false
 # Winoc
 # enable wireless, when false, all wireless channel configuration is
 # ignored
-use_winoc: true
+use_winoc: false
 #winoc_dst_hops: 4
 # experimental power saving strategy
 use_wirxsleep: false

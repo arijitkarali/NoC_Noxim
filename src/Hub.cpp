@@ -16,25 +16,24 @@ int Hub::tile2Port(int id)
 	return tile2port_mapping.at(id);
 }
 
-int Hub::findRelay(int local_id,int dstId)
+int Hub::findRelay(int loc,int dstId)
 {
-	int loc = GlobalParams::hub_configuration[local_id].location;
-	int src_x,src_y,dst_x,dst_y;
+	int cur_x,cur_y,dst_x,dst_y;
 	
-	src_x = loc % GlobalParams::mesh_dim_x;
-	src_y = loc / GlobalParams::mesh_dim_y;
+	cur_x = loc % GlobalParams::mesh_dim_x;
+	cur_y = loc / GlobalParams::mesh_dim_y;
 	
 	dst_x = dstId % GlobalParams::mesh_dim_x;
 	dst_y = dstId / GlobalParams::mesh_dim_y;
-	if(src_x != dst_x)
+	if(cur_x != dst_x)
 	{
-		if(src_x < dst_x) return tile2Port(local_id+1);
-		else return tile2Port(local_id-1);
+		if(cur_x < dst_x) return tile2Port(loc+1);
+		else return tile2Port(loc-1);
 	}
 	else
 	{
-		if(src_y < dst_y) return tile2Port(local_id + GlobalParams::mesh_dim_x);
-		else return tile2Port(local_id - GlobalParams::mesh_dim_x);
+		if(cur_y < dst_y) return tile2Port(loc + GlobalParams::mesh_dim_x);
+		else return tile2Port(loc - GlobalParams::mesh_dim_x);
 	}
 }
 
@@ -45,13 +44,13 @@ int Hub::subnetofNode(int NodeID)
 
 int Hub::subnetofHub(int HubID)
 {
-	return HubID/2;
+	return HubID;
 }
 
 int Hub::route(Flit& f)
 {
 	// check if it is a local delivery
-	int loc = GlobalParams::hub_configuration[local_id].location;
+	int loc = GlobalParams::HubLocations[local_id];
 	
 	if(loc == f.dst_id) return DIRECTION_LOCAL;
 	
@@ -66,7 +65,7 @@ int Hub::route(Flit& f)
 			}
 			
 			// ...or the destination is not directly connected then forward it to a relay tile
-			return findRelay(local_id,f.dst_id);
+			return findRelay(loc,f.dst_id);
 		}
 	}
 	return DIRECTION_WIRELESS;
@@ -531,7 +530,9 @@ void Hub::tileToAntennaProcess()
 				assert(flit.vc_id == vc);
 
 				power.bufferFromTileFront();
+				
 				r_from_tile[i][vc] = route(flit);
+				LOG << "got the route"<<endl;
 				
 				if(r_from_tile[i][vc]==DIRECTION_WIRELESS)
 				{
@@ -545,7 +546,7 @@ void Hub::tileToAntennaProcess()
 						int channel;
 
 						if (flit.hub_relay_node==NOT_VALID)
-							channel = selectChannel(local_id, tile2Hub(flit.dst_id));
+							channel = selectChannel(local_id, subnetofNode(flit.dst_id));
 						else
 							channel = selectChannel(local_id, tile2Hub(flit.hub_relay_node));
 
@@ -759,6 +760,7 @@ void Hub::tileToAntennaProcess()
 	// IMPORTANT: do not move from here
 	// The txPowerManager assumes that all flit buffer write have been done
 	updateTxPower();
+	//LOG << "hub " << local_id <<" tile2ant(sending) works" << endl;
 }
 
 int Hub::selectChannel(int src_hub, int dst_hub) const

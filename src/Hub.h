@@ -119,6 +119,7 @@ SC_MODULE(Hub)
         local_id = id;
 	token_ring = tr;
         num_ports = GlobalParams::hub_configuration[local_id].attachedNodes.size()+1; // 4 neighbour + 1 local
+        cout << "hub "<< local_id << " has " <<num_ports << " ports" << endl;
         attachedNodes = GlobalParams::hub_configuration[local_id].attachedNodes;
         rxChannels = GlobalParams::hub_configuration[local_id].rxChannels;
         txChannels = GlobalParams::hub_configuration[local_id].txChannels;

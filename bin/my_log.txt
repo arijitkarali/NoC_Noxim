@@ -1,0 +1,1456 @@
+	--------------------------------------------
+		Noxim - the NoC Simulator
+		(C) University of Catania
+	--------------------------------------------
+Catania V., Mineo A., Monteleone S., Palesi M., and Patti D. (2016) Cycle-Accurate Network on Chip Simulation with Noxim. ACM Trans. Model. Comput. Simul. 27, 1, Article 4 (August 2016), 25 pages. DOI: https://doi.org/10.1145/2953878
+
+
+Loading configuration from file "../config_examples/default_config.yaml"... Done
+Loading power configurations from file "power.yaml"... Done
+9 14 49 54 
+0       NoC.Channel_0::Channel() --> Channel 0 data rate 16 Gbps, flit transmission delay 2000 ps, (aligned to 2000 ps) 2 cycles 
+hub 0 has 5 ports
+hub 1 has 5 ports
+hub 2 has 5 ports
+hub 3 has 5 ports
+hub 0 : bound with 1
+hub 1 : bound with 6
+hub 0 : bound with 8
+hub 0 : hub-pe ports are bound
+hub 0 : bound with 10
+hub 1 : bound with 13
+hub 1 : hub-pe ports are bound
+hub 1 : bound with 15
+hub 0 : bound with 17
+hub 1 : bound with 22
+hub 2 : bound with 41
+hub 3 : bound with 46
+hub 2 : bound with 48
+hub 2 : hub-pe ports are bound
+hub 2 : bound with 50
+hub 3 : bound with 53
+hub 3 : hub-pe ports are bound
+hub 3 : bound with 55
+hub 2 : bound with 57
+hub 3 : bound with 62
+NoC works
+Reset for 1000 cycles... 0       NoC.Hub_0.init_0::thread_process() -->  *** waiting for transmissions
+0       NoC.Hub_1.init_0::thread_process() -->  *** waiting for transmissions
+0       NoC.Hub_2.init_0::thread_process() -->  *** waiting for transmissions
+0       NoC.Hub_3.init_0::thread_process() -->  *** waiting for transmissions
+ done! 
+ Now running for 100000 cycles...
+1000    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1001    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1002    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1003    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1004    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1005    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1006    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1007    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1008    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1009    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1010    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1011    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1012    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1012    NoC.Tile[04][04]_(#36).Router::rxProcess() -->  Flit (H0, 36->9 VC 0) collected from Input[4][0]
+1013    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1013    NoC.Tile[04][04]_(#36).Router::txProcess() -->  checking availability of Output[3] for Input[4][0] flit (H0, 36->9 VC 0)
+1013    NoC.Tile[04][04]_(#36).Router::txProcess() -->  reserving direction 3 for flit (H0, 36->9 VC 0)
+1013    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1013    NoC.Tile[04][04]_(#36).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (H0, 36->9 VC 0)
+1014    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1014    NoC.Tile[03][04]_(#35).Router::rxProcess() -->  Flit (H0, 36->9 VC 0) collected from Input[1][0]
+1014    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1014    NoC.Tile[04][04]_(#36).Router::rxProcess() -->  Flit (B1, 36->9 VC 0) collected from Input[4][0]
+1015    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1015    NoC.Tile[03][04]_(#35).Router::txProcess() -->  checking availability of Output[3] for Input[1][0] flit (H0, 36->9 VC 0)
+1015    NoC.Tile[03][04]_(#35).Router::txProcess() -->  reserving direction 3 for flit (H0, 36->9 VC 0)
+1015    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1015    NoC.Tile[03][04]_(#35).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (H0, 36->9 VC 0)
+1015    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1015    NoC.Tile[04][04]_(#36).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B1, 36->9 VC 0)
+1016    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1016    NoC.Tile[02][04]_(#34).Router::rxProcess() -->  Flit (H0, 36->9 VC 0) collected from Input[1][0]
+1016    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1016    NoC.Tile[03][04]_(#35).Router::rxProcess() -->  Flit (B1, 36->9 VC 0) collected from Input[1][0]
+1016    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1016    NoC.Tile[04][04]_(#36).Router::rxProcess() -->  Flit (B2, 36->9 VC 0) collected from Input[4][0]
+1017    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1017    NoC.Tile[02][04]_(#34).Router::txProcess() -->  checking availability of Output[3] for Input[1][0] flit (H0, 36->9 VC 0)
+1017    NoC.Tile[02][04]_(#34).Router::txProcess() -->  reserving direction 3 for flit (H0, 36->9 VC 0)
+1017    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1017    NoC.Tile[02][04]_(#34).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (H0, 36->9 VC 0)
+1017    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1017    NoC.Tile[03][04]_(#35).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B1, 36->9 VC 0)
+1017    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1017    NoC.Tile[04][04]_(#36).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B2, 36->9 VC 0)
+1018    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1018    NoC.Tile[01][04]_(#33).Router::rxProcess() -->  Flit (H0, 36->9 VC 0) collected from Input[1][0]
+1018    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1018    NoC.Tile[02][04]_(#34).Router::rxProcess() -->  Flit (B1, 36->9 VC 0) collected from Input[1][0]
+1018    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1018    NoC.Tile[03][04]_(#35).Router::rxProcess() -->  Flit (B2, 36->9 VC 0) collected from Input[1][0]
+1018    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1018    NoC.Tile[04][04]_(#36).Router::rxProcess() -->  Flit (B3, 36->9 VC 0) collected from Input[4][0]
+1019    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1019    NoC.Tile[01][04]_(#33).Router::txProcess() -->  checking availability of Output[0] for Input[1][0] flit (H0, 36->9 VC 0)
+1019    NoC.Tile[01][04]_(#33).Router::txProcess() -->  reserving direction 0 for flit (H0, 36->9 VC 0)
+1019    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1019    NoC.Tile[01][04]_(#33).Router::txProcess() --> Input[1][0] forwarded to Output[0], flit: (H0, 36->9 VC 0)
+1019    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1019    NoC.Tile[02][04]_(#34).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B1, 36->9 VC 0)
+1019    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1019    NoC.Tile[03][04]_(#35).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B2, 36->9 VC 0)
+1019    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1019    NoC.Tile[04][04]_(#36).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B3, 36->9 VC 0)
+1020    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1020    NoC.Tile[01][03]_(#25).Router::rxProcess() -->  Flit (H0, 36->9 VC 0) collected from Input[2][0]
+1020    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1020    NoC.Tile[01][04]_(#33).Router::rxProcess() -->  Flit (B1, 36->9 VC 0) collected from Input[1][0]
+1020    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1020    NoC.Tile[02][04]_(#34).Router::rxProcess() -->  Flit (B2, 36->9 VC 0) collected from Input[1][0]
+1020    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1020    NoC.Tile[03][04]_(#35).Router::rxProcess() -->  Flit (B3, 36->9 VC 0) collected from Input[1][0]
+1020    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1020    NoC.Tile[04][04]_(#36).Router::rxProcess() -->  Flit (B4, 36->9 VC 0) collected from Input[4][0]
+1021    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1021    NoC.Tile[01][03]_(#25).Router::txProcess() -->  checking availability of Output[0] for Input[2][0] flit (H0, 36->9 VC 0)
+1021    NoC.Tile[01][03]_(#25).Router::txProcess() -->  reserving direction 0 for flit (H0, 36->9 VC 0)
+1021    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1021    NoC.Tile[01][03]_(#25).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (H0, 36->9 VC 0)
+1021    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1021    NoC.Tile[01][04]_(#33).Router::txProcess() --> Input[1][0] forwarded to Output[0], flit: (B1, 36->9 VC 0)
+1021    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1021    NoC.Tile[02][04]_(#34).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B2, 36->9 VC 0)
+1021    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1021    NoC.Tile[03][04]_(#35).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B3, 36->9 VC 0)
+1021    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1021    NoC.Tile[04][04]_(#36).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B4, 36->9 VC 0)
+1022    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1022    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (H0, 36->9 VC 0) collected from Input[2][0]
+1022    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1022    NoC.Tile[01][03]_(#25).Router::rxProcess() -->  Flit (B1, 36->9 VC 0) collected from Input[2][0]
+1022    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1022    NoC.Tile[01][04]_(#33).Router::rxProcess() -->  Flit (B2, 36->9 VC 0) collected from Input[1][0]
+1022    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1022    NoC.Tile[02][04]_(#34).Router::rxProcess() -->  Flit (B3, 36->9 VC 0) collected from Input[1][0]
+1022    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1022    NoC.Tile[03][04]_(#35).Router::rxProcess() -->  Flit (B4, 36->9 VC 0) collected from Input[1][0]
+1022    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1022    NoC.Tile[04][04]_(#36).Router::rxProcess() -->  Flit (B5, 36->9 VC 0) collected from Input[4][0]
+1023    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1023    NoC.Tile[01][02]_(#17).Router::txProcess() -->  checking availability of Output[5] for Input[2][0] flit (H0, 36->9 VC 0)
+1023    NoC.Tile[01][02]_(#17).Router::txProcess() -->  reserving direction 5 for flit (H0, 36->9 VC 0)
+1023    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1023    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[2][0] forwarded to Output[5], flit: (H0, 36->9 VC 0)
+1023    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1023    NoC.Tile[01][03]_(#25).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B1, 36->9 VC 0)
+1023    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1023    NoC.Tile[01][04]_(#33).Router::txProcess() --> Input[1][0] forwarded to Output[0], flit: (B2, 36->9 VC 0)
+1023    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1023    NoC.Tile[02][04]_(#34).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B3, 36->9 VC 0)
+1023    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1023    NoC.Tile[03][04]_(#35).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B4, 36->9 VC 0)
+1023    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1023    NoC.Tile[04][04]_(#36).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B5, 36->9 VC 0)
+1024    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1024    NoC.Hub_0::tileToAntennaProcess() --> Reading (H0, 36->9 VC 0) from signal flit_rx[3]
+1024    NoC.Hub_0::tileToAntennaProcess() --> Storing (H0, 36->9 VC 0) on buffer_from_tile[3][0]
+1024    NoC.Tile[07][00]_(#7).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[4][0]
+1024    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1024    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B1, 36->9 VC 0) collected from Input[2][0]
+1024    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1024    NoC.Tile[01][03]_(#25).Router::rxProcess() -->  Flit (B2, 36->9 VC 0) collected from Input[2][0]
+1024    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1024    NoC.Tile[01][04]_(#33).Router::rxProcess() -->  Flit (B3, 36->9 VC 0) collected from Input[1][0]
+1024    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1024    NoC.Tile[02][04]_(#34).Router::rxProcess() -->  Flit (B4, 36->9 VC 0) collected from Input[1][0]
+1024    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1024    NoC.Tile[03][04]_(#35).Router::rxProcess() -->  Flit (B5, 36->9 VC 0) collected from Input[1][0]
+1024    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1024    NoC.Tile[04][04]_(#36).Router::rxProcess() -->  Flit (B6, 36->9 VC 0) collected from Input[4][0]
+1025    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1025    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1025    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1025    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1025    NoC.Hub_0::tileToAntennaProcess() -->  reserving direction 4 for flit (H0, 36->9 VC 0)
+1025    NoC.Tile[07][00]_(#7).Router::txProcess() -->  checking availability of Output[3] for Input[4][0] flit (H0, 7->56 VC 0)
+1025    NoC.Tile[07][00]_(#7).Router::txProcess() -->  reserving direction 3 for flit (H0, 7->56 VC 0)
+1025    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1025    NoC.Tile[07][00]_(#7).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (H0, 7->56 VC 0)
+1025    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1025    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[2][0] forwarded to Output[5], flit: (B1, 36->9 VC 0)
+1025    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1025    NoC.Tile[01][03]_(#25).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B2, 36->9 VC 0)
+1025    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1025    NoC.Tile[01][04]_(#33).Router::txProcess() --> Input[1][0] forwarded to Output[0], flit: (B3, 36->9 VC 0)
+1025    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1025    NoC.Tile[02][04]_(#34).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B4, 36->9 VC 0)
+1025    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1025    NoC.Tile[03][04]_(#35).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B5, 36->9 VC 0)
+1025    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1025    NoC.Tile[04][04]_(#36).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B6, 36->9 VC 0)
+1026    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1026    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1026    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1026    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1026    NoC.Hub_0::tileToAntennaProcess() --> Reading (B1, 36->9 VC 0) from signal flit_rx[3]
+1026    NoC.Hub_0::tileToAntennaProcess() --> Storing (B1, 36->9 VC 0) on buffer_from_tile[3][0]
+1026    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1026    NoC.Tile[06][00]_(#6).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[1][0]
+1026    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1026    NoC.Tile[07][00]_(#7).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[4][0]
+1026    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1026    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B2, 36->9 VC 0) collected from Input[2][0]
+1026    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1026    NoC.Tile[01][03]_(#25).Router::rxProcess() -->  Flit (B3, 36->9 VC 0) collected from Input[2][0]
+1026    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1026    NoC.Tile[01][04]_(#33).Router::rxProcess() -->  Flit (B4, 36->9 VC 0) collected from Input[1][0]
+1026    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1026    NoC.Tile[02][04]_(#34).Router::rxProcess() -->  Flit (B5, 36->9 VC 0) collected from Input[1][0]
+1026    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1026    NoC.Tile[03][04]_(#35).Router::rxProcess() -->  Flit (B6, 36->9 VC 0) collected from Input[1][0]
+1026    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1026    NoC.Tile[04][04]_(#36).Router::rxProcess() -->  Flit (T7, 36->9 VC 0) collected from Input[4][0]
+1027    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1027    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1027    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1027    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1027    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1027    NoC.Tile[06][00]_(#6).Router::txProcess() -->  checking availability of Output[3] for Input[1][0] flit (H0, 7->56 VC 0)
+1027    NoC.Tile[06][00]_(#6).Router::txProcess() -->  reserving direction 3 for flit (H0, 7->56 VC 0)
+1027    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1027    NoC.Tile[06][00]_(#6).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (H0, 7->56 VC 0)
+1027    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1027    NoC.Tile[07][00]_(#7).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B1, 7->56 VC 0)
+1027    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1027    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[2][0] forwarded to Output[5], flit: (B2, 36->9 VC 0)
+1027    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1027    NoC.Tile[01][03]_(#25).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B3, 36->9 VC 0)
+1027    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1027    NoC.Tile[01][04]_(#33).Router::txProcess() --> Input[1][0] forwarded to Output[0], flit: (B4, 36->9 VC 0)
+1027    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1027    NoC.Tile[02][04]_(#34).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B5, 36->9 VC 0)
+1027    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1027    NoC.Tile[03][04]_(#35).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B6, 36->9 VC 0)
+1027    NoC.Tile[04][04]_(#36).Router::txProcess() --> o = 3
+1027    NoC.Tile[04][04]_(#36).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (T7, 36->9 VC 0)
+1028    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1028    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1028    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1028    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1028    NoC.Hub_0::tileToAntennaProcess() --> Reading (B2, 36->9 VC 0) from signal flit_rx[3]
+1028    NoC.Hub_0::tileToAntennaProcess() --> Storing (B2, 36->9 VC 0) on buffer_from_tile[3][0]
+1028    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1028    NoC.Tile[05][00]_(#5).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[1][0]
+1028    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1028    NoC.Tile[06][00]_(#6).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[1][0]
+1028    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1028    NoC.Tile[07][00]_(#7).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[4][0]
+1028    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1028    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B3, 36->9 VC 0) collected from Input[2][0]
+1028    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1028    NoC.Tile[01][03]_(#25).Router::rxProcess() -->  Flit (B4, 36->9 VC 0) collected from Input[2][0]
+1028    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1028    NoC.Tile[01][04]_(#33).Router::rxProcess() -->  Flit (B5, 36->9 VC 0) collected from Input[1][0]
+1028    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1028    NoC.Tile[02][04]_(#34).Router::rxProcess() -->  Flit (B6, 36->9 VC 0) collected from Input[1][0]
+1028    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1028    NoC.Tile[03][04]_(#35).Router::rxProcess() -->  Flit (T7, 36->9 VC 0) collected from Input[1][0]
+1029    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1029    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1029    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1029    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1029    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1029    NoC.Tile[05][00]_(#5).Router::txProcess() -->  checking availability of Output[3] for Input[1][0] flit (H0, 7->56 VC 0)
+1029    NoC.Tile[05][00]_(#5).Router::txProcess() -->  reserving direction 3 for flit (H0, 7->56 VC 0)
+1029    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1029    NoC.Tile[05][00]_(#5).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (H0, 7->56 VC 0)
+1029    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1029    NoC.Tile[06][00]_(#6).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B1, 7->56 VC 0)
+1029    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1029    NoC.Tile[07][00]_(#7).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B2, 7->56 VC 0)
+1029    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1029    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[2][0] forwarded to Output[5], flit: (B3, 36->9 VC 0)
+1029    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1029    NoC.Tile[01][03]_(#25).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B4, 36->9 VC 0)
+1029    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1029    NoC.Tile[01][04]_(#33).Router::txProcess() --> Input[1][0] forwarded to Output[0], flit: (B5, 36->9 VC 0)
+1029    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1029    NoC.Tile[02][04]_(#34).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B6, 36->9 VC 0)
+1029    NoC.Tile[03][04]_(#35).Router::txProcess() --> o = 3
+1029    NoC.Tile[03][04]_(#35).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (T7, 36->9 VC 0)
+1030    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1030    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1030    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1030    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1030    NoC.Hub_0::tileToAntennaProcess() --> Reading (B3, 36->9 VC 0) from signal flit_rx[3]
+1030    NoC.Hub_0::tileToAntennaProcess() --> Storing (B3, 36->9 VC 0) on buffer_from_tile[3][0]
+1030    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1030    NoC.Tile[04][00]_(#4).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[1][0]
+1030    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1030    NoC.Tile[05][00]_(#5).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[1][0]
+1030    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1030    NoC.Tile[06][00]_(#6).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[1][0]
+1030    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1030    NoC.Tile[07][00]_(#7).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[4][0]
+1030    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1030    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B4, 36->9 VC 0) collected from Input[2][0]
+1030    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1030    NoC.Tile[01][03]_(#25).Router::rxProcess() -->  Flit (B5, 36->9 VC 0) collected from Input[2][0]
+1030    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1030    NoC.Tile[01][04]_(#33).Router::rxProcess() -->  Flit (B6, 36->9 VC 0) collected from Input[1][0]
+1030    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1030    NoC.Tile[02][04]_(#34).Router::rxProcess() -->  Flit (T7, 36->9 VC 0) collected from Input[1][0]
+1031    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1031    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1031    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1031    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1031    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1031    NoC.Tile[04][00]_(#4).Router::txProcess() -->  checking availability of Output[3] for Input[1][0] flit (H0, 7->56 VC 0)
+1031    NoC.Tile[04][00]_(#4).Router::txProcess() -->  reserving direction 3 for flit (H0, 7->56 VC 0)
+1031    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1031    NoC.Tile[04][00]_(#4).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (H0, 7->56 VC 0)
+1031    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1031    NoC.Tile[05][00]_(#5).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B1, 7->56 VC 0)
+1031    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1031    NoC.Tile[06][00]_(#6).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B2, 7->56 VC 0)
+1031    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1031    NoC.Tile[07][00]_(#7).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B3, 7->56 VC 0)
+1031    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1031    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1031    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1031    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1031    NoC.Tile[01][03]_(#25).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B5, 36->9 VC 0)
+1031    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1031    NoC.Tile[01][04]_(#33).Router::txProcess() --> Input[1][0] forwarded to Output[0], flit: (B6, 36->9 VC 0)
+1031    NoC.Tile[02][04]_(#34).Router::txProcess() --> o = 3
+1031    NoC.Tile[02][04]_(#34).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (T7, 36->9 VC 0)
+1031    NoC.Tile[05][05]_(#45).Router::rxProcess() -->  Flit (H0, 45->45 VC 0) collected from Input[4][0]
+1032    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1032    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1032    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1032    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1032    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1032    NoC.Tile[03][00]_(#3).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[1][0]
+1032    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1032    NoC.Tile[04][00]_(#4).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[1][0]
+1032    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1032    NoC.Tile[05][00]_(#5).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[1][0]
+1032    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1032    NoC.Tile[06][00]_(#6).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[1][0]
+1032    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1032    NoC.Tile[07][00]_(#7).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[4][0]
+1032    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1032    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1032    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1032    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B5, 36->9 VC 0) collected from Input[2][0]
+1032    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1032    NoC.Tile[01][03]_(#25).Router::rxProcess() -->  Flit (B6, 36->9 VC 0) collected from Input[2][0]
+1032    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1032    NoC.Tile[01][04]_(#33).Router::rxProcess() -->  Flit (T7, 36->9 VC 0) collected from Input[1][0]
+1032    NoC.Tile[05][05]_(#45).Router::txProcess() -->  checking availability of Output[4] for Input[4][0] flit (H0, 45->45 VC 0)
+1032    NoC.Tile[05][05]_(#45).Router::txProcess() -->  reserving direction 4 for flit (H0, 45->45 VC 0)
+1032    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1032    NoC.Tile[05][05]_(#45).Router::txProcess() --> Input[4][0] forwarded to Output[4], flit: (H0, 45->45 VC 0)
+1032    NoC.Tile[05][05]_(#45).Router::txProcess() --> Consumed flit (H0, 45->45 VC 0)
+1033    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1033    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1033    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1033    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1033    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1033    NoC.Tile[03][00]_(#3).Router::txProcess() -->  checking availability of Output[3] for Input[1][0] flit (H0, 7->56 VC 0)
+1033    NoC.Tile[03][00]_(#3).Router::txProcess() -->  reserving direction 3 for flit (H0, 7->56 VC 0)
+1033    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1033    NoC.Tile[03][00]_(#3).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (H0, 7->56 VC 0)
+1033    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1033    NoC.Tile[04][00]_(#4).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B1, 7->56 VC 0)
+1033    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1033    NoC.Tile[05][00]_(#5).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B2, 7->56 VC 0)
+1033    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1033    NoC.Tile[06][00]_(#6).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B3, 7->56 VC 0)
+1033    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1033    NoC.Tile[07][00]_(#7).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B4, 7->56 VC 0)
+1033    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1033    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1033    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1033    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1033    NoC.Tile[01][03]_(#25).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B6, 36->9 VC 0)
+1033    NoC.Tile[01][04]_(#33).Router::txProcess() --> o = 0
+1033    NoC.Tile[01][04]_(#33).Router::txProcess() --> Input[1][0] forwarded to Output[0], flit: (T7, 36->9 VC 0)
+1033    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1033    NoC.Tile[05][05]_(#45).Router::rxProcess() -->  Flit (B1, 45->45 VC 0) collected from Input[4][0]
+1034    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1034    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1034    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1034    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1034    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1034    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[1][0]
+1034    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1034    NoC.Tile[03][00]_(#3).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[1][0]
+1034    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1034    NoC.Tile[04][00]_(#4).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[1][0]
+1034    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1034    NoC.Tile[05][00]_(#5).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[1][0]
+1034    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1034    NoC.Tile[06][00]_(#6).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[1][0]
+1034    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1034    NoC.Tile[07][00]_(#7).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[4][0]
+1034    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1034    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1034    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1034    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B6, 36->9 VC 0) collected from Input[2][0]
+1034    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1034    NoC.Tile[01][03]_(#25).Router::rxProcess() -->  Flit (T7, 36->9 VC 0) collected from Input[2][0]
+1034    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1034    NoC.Tile[05][05]_(#45).Router::txProcess() --> Input[4][0] forwarded to Output[4], flit: (B1, 45->45 VC 0)
+1034    NoC.Tile[05][05]_(#45).Router::txProcess() --> Consumed flit (B1, 45->45 VC 0)
+1035    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1035    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1035    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1035    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1035    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1035    NoC.Tile[02][00]_(#2).Router::txProcess() -->  checking availability of Output[3] for Input[1][0] flit (H0, 7->56 VC 0)
+1035    NoC.Tile[02][00]_(#2).Router::txProcess() -->  reserving direction 3 for flit (H0, 7->56 VC 0)
+1035    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1035    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (H0, 7->56 VC 0)
+1035    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1035    NoC.Tile[03][00]_(#3).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B1, 7->56 VC 0)
+1035    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1035    NoC.Tile[04][00]_(#4).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B2, 7->56 VC 0)
+1035    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1035    NoC.Tile[05][00]_(#5).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B3, 7->56 VC 0)
+1035    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1035    NoC.Tile[06][00]_(#6).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B4, 7->56 VC 0)
+1035    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1035    NoC.Tile[07][00]_(#7).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B5, 7->56 VC 0)
+1035    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1035    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1035    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1035    NoC.Tile[01][03]_(#25).Router::txProcess() --> o = 0
+1035    NoC.Tile[01][03]_(#25).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (T7, 36->9 VC 0)
+1035    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1035    NoC.Tile[05][05]_(#45).Router::rxProcess() -->  Flit (B2, 45->45 VC 0) collected from Input[4][0]
+1036    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1036    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1036    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1036    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1036    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1036    NoC.Tile[01][00]_(#1).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[1][0]
+1036    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1036    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[1][0]
+1036    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1036    NoC.Tile[03][00]_(#3).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[1][0]
+1036    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1036    NoC.Tile[04][00]_(#4).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[1][0]
+1036    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1036    NoC.Tile[05][00]_(#5).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[1][0]
+1036    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1036    NoC.Tile[06][00]_(#6).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[1][0]
+1036    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1036    NoC.Tile[07][00]_(#7).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[4][0]
+1036    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1036    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1036    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1036    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (T7, 36->9 VC 0) collected from Input[2][0]
+1036    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1036    NoC.Tile[05][05]_(#45).Router::txProcess() --> Input[4][0] forwarded to Output[4], flit: (B2, 45->45 VC 0)
+1036    NoC.Tile[05][05]_(#45).Router::txProcess() --> Consumed flit (B2, 45->45 VC 0)
+1037    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1037    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1037    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1037    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1037    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1037    NoC.Tile[01][00]_(#1).Router::txProcess() -->  checking availability of Output[3] for Input[1][0] flit (H0, 7->56 VC 0)
+1037    NoC.Tile[01][00]_(#1).Router::txProcess() -->  reserving direction 3 for flit (H0, 7->56 VC 0)
+1037    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1037    NoC.Tile[01][00]_(#1).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (H0, 7->56 VC 0)
+1037    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1037    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B1, 7->56 VC 0)
+1037    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1037    NoC.Tile[03][00]_(#3).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B2, 7->56 VC 0)
+1037    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1037    NoC.Tile[04][00]_(#4).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B3, 7->56 VC 0)
+1037    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1037    NoC.Tile[05][00]_(#5).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B4, 7->56 VC 0)
+1037    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1037    NoC.Tile[06][00]_(#6).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B5, 7->56 VC 0)
+1037    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1037    NoC.Tile[07][00]_(#7).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (B6, 7->56 VC 0)
+1037    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1037    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1037    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1037    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1037    NoC.Tile[05][05]_(#45).Router::rxProcess() -->  Flit (B3, 45->45 VC 0) collected from Input[4][0]
+1038    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1038    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1038    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1038    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1038    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1038    NoC.Tile[00][00]_(#0).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[1][0]
+1038    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1038    NoC.Tile[01][00]_(#1).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[1][0]
+1038    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1038    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[1][0]
+1038    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1038    NoC.Tile[03][00]_(#3).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[1][0]
+1038    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1038    NoC.Tile[04][00]_(#4).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[1][0]
+1038    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1038    NoC.Tile[05][00]_(#5).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[1][0]
+1038    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1038    NoC.Tile[06][00]_(#6).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[1][0]
+1038    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1038    NoC.Tile[07][00]_(#7).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[4][0]
+1038    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1038    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1038    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1038    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1038    NoC.Tile[05][05]_(#45).Router::txProcess() --> Input[4][0] forwarded to Output[4], flit: (B3, 45->45 VC 0)
+1038    NoC.Tile[05][05]_(#45).Router::txProcess() --> Consumed flit (B3, 45->45 VC 0)
+1039    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1039    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1039    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1039    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1039    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1039    NoC.Tile[00][00]_(#0).Router::txProcess() -->  checking availability of Output[2] for Input[1][0] flit (H0, 7->56 VC 0)
+1039    NoC.Tile[00][00]_(#0).Router::txProcess() -->  reserving direction 2 for flit (H0, 7->56 VC 0)
+1039    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1039    NoC.Tile[00][00]_(#0).Router::txProcess() --> Input[1][0] forwarded to Output[2], flit: (H0, 7->56 VC 0)
+1039    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1039    NoC.Tile[01][00]_(#1).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B1, 7->56 VC 0)
+1039    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1039    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B2, 7->56 VC 0)
+1039    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1039    NoC.Tile[03][00]_(#3).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B3, 7->56 VC 0)
+1039    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1039    NoC.Tile[04][00]_(#4).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B4, 7->56 VC 0)
+1039    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1039    NoC.Tile[05][00]_(#5).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B5, 7->56 VC 0)
+1039    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1039    NoC.Tile[06][00]_(#6).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B6, 7->56 VC 0)
+1039    NoC.Tile[07][00]_(#7).Router::txProcess() --> o = 3
+1039    NoC.Tile[07][00]_(#7).Router::txProcess() --> Input[4][0] forwarded to Output[3], flit: (T7, 7->56 VC 0)
+1039    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1039    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1039    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1039    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1039    NoC.Tile[05][05]_(#45).Router::rxProcess() -->  Flit (B4, 45->45 VC 0) collected from Input[4][0]
+1040    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1040    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1040    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1040    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1040    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1040    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1040    NoC.Tile[00][00]_(#0).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[1][0]
+1040    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1040    NoC.Tile[01][00]_(#1).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[1][0]
+1040    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1040    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[1][0]
+1040    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1040    NoC.Tile[03][00]_(#3).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[1][0]
+1040    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1040    NoC.Tile[04][00]_(#4).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[1][0]
+1040    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1040    NoC.Tile[05][00]_(#5).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[1][0]
+1040    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1040    NoC.Tile[06][00]_(#6).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[1][0]
+1040    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[0][0]
+1040    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1040    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1040    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1040    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1040    NoC.Tile[05][05]_(#45).Router::txProcess() --> Input[4][0] forwarded to Output[4], flit: (B4, 45->45 VC 0)
+1040    NoC.Tile[05][05]_(#45).Router::txProcess() --> Consumed flit (B4, 45->45 VC 0)
+1041    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1041    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1041    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1041    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1041    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1041    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1041    NoC.Tile[00][00]_(#0).Router::txProcess() --> Input[1][0] forwarded to Output[2], flit: (B1, 7->56 VC 0)
+1041    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1041    NoC.Tile[01][00]_(#1).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B2, 7->56 VC 0)
+1041    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1041    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B3, 7->56 VC 0)
+1041    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1041    NoC.Tile[03][00]_(#3).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B4, 7->56 VC 0)
+1041    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1041    NoC.Tile[04][00]_(#4).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B5, 7->56 VC 0)
+1041    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1041    NoC.Tile[05][00]_(#5).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B6, 7->56 VC 0)
+1041    NoC.Tile[06][00]_(#6).Router::txProcess() --> o = 3
+1041    NoC.Tile[06][00]_(#6).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (T7, 7->56 VC 0)
+1041    NoC.Tile[00][01]_(#8).Router::txProcess() -->  checking availability of Output[2] for Input[0][0] flit (H0, 7->56 VC 0)
+1041    NoC.Tile[00][01]_(#8).Router::txProcess() -->  reserving direction 2 for flit (H0, 7->56 VC 0)
+1041    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1041    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (H0, 7->56 VC 0)
+1041    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1041    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1041    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1041    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1041    NoC.Tile[05][05]_(#45).Router::rxProcess() -->  Flit (B5, 45->45 VC 0) collected from Input[4][0]
+1042    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1042    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1042    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1042    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1042    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1042    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1042    NoC.Tile[00][00]_(#0).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[1][0]
+1042    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1042    NoC.Tile[01][00]_(#1).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[1][0]
+1042    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1042    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[1][0]
+1042    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1042    NoC.Tile[03][00]_(#3).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[1][0]
+1042    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1042    NoC.Tile[04][00]_(#4).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[1][0]
+1042    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1042    NoC.Tile[05][00]_(#5).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[1][0]
+1042    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1042    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[0][0]
+1042    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[0][0]
+1042    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1042    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1042    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1042    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1042    NoC.Tile[05][05]_(#45).Router::txProcess() --> Input[4][0] forwarded to Output[4], flit: (B5, 45->45 VC 0)
+1042    NoC.Tile[05][05]_(#45).Router::txProcess() --> Consumed flit (B5, 45->45 VC 0)
+1043    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1043    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1043    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1043    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1043    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1043    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1043    NoC.Tile[00][00]_(#0).Router::txProcess() --> Input[1][0] forwarded to Output[2], flit: (B2, 7->56 VC 0)
+1043    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1043    NoC.Tile[01][00]_(#1).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B3, 7->56 VC 0)
+1043    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1043    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B4, 7->56 VC 0)
+1043    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1043    NoC.Tile[03][00]_(#3).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B5, 7->56 VC 0)
+1043    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1043    NoC.Tile[04][00]_(#4).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B6, 7->56 VC 0)
+1043    NoC.Tile[05][00]_(#5).Router::txProcess() --> o = 3
+1043    NoC.Tile[05][00]_(#5).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (T7, 7->56 VC 0)
+1043    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1043    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B1, 7->56 VC 0)
+1043    NoC.Tile[00][02]_(#16).Router::txProcess() -->  checking availability of Output[2] for Input[0][0] flit (H0, 7->56 VC 0)
+1043    NoC.Tile[00][02]_(#16).Router::txProcess() -->  reserving direction 2 for flit (H0, 7->56 VC 0)
+1043    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1043    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (H0, 7->56 VC 0)
+1043    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1043    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1043    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1043    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1043    NoC.Tile[05][05]_(#45).Router::rxProcess() -->  Flit (B6, 45->45 VC 0) collected from Input[4][0]
+1044    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1044    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1044    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1044    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1044    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1044    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1044    NoC.Tile[00][00]_(#0).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[1][0]
+1044    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1044    NoC.Tile[01][00]_(#1).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[1][0]
+1044    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1044    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[1][0]
+1044    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1044    NoC.Tile[03][00]_(#3).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[1][0]
+1044    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1044    NoC.Tile[04][00]_(#4).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[1][0]
+1044    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1044    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[0][0]
+1044    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1044    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[0][0]
+1044    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1044    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1044    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1044    NoC.Tile[00][03]_(#24).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[0][0]
+1044    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1044    NoC.Tile[05][05]_(#45).Router::txProcess() --> Input[4][0] forwarded to Output[4], flit: (B6, 45->45 VC 0)
+1044    NoC.Tile[05][05]_(#45).Router::txProcess() --> Consumed flit (B6, 45->45 VC 0)
+1045    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1045    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1045    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1045    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1045    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1045    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1045    NoC.Tile[00][00]_(#0).Router::txProcess() --> Input[1][0] forwarded to Output[2], flit: (B3, 7->56 VC 0)
+1045    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1045    NoC.Tile[01][00]_(#1).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B4, 7->56 VC 0)
+1045    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1045    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B5, 7->56 VC 0)
+1045    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1045    NoC.Tile[03][00]_(#3).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B6, 7->56 VC 0)
+1045    NoC.Tile[04][00]_(#4).Router::txProcess() --> o = 3
+1045    NoC.Tile[04][00]_(#4).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (T7, 7->56 VC 0)
+1045    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1045    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B2, 7->56 VC 0)
+1045    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1045    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B1, 7->56 VC 0)
+1045    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (H0, 16->2 VC 0) collected from Input[4][0]
+1045    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1045    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1045    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1045    NoC.Tile[00][03]_(#24).Router::txProcess() -->  checking availability of Output[2] for Input[0][0] flit (H0, 7->56 VC 0)
+1045    NoC.Tile[00][03]_(#24).Router::txProcess() -->  reserving direction 2 for flit (H0, 7->56 VC 0)
+1045    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1045    NoC.Tile[00][03]_(#24).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (H0, 7->56 VC 0)
+1045    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1045    NoC.Tile[05][05]_(#45).Router::rxProcess() -->  Flit (T7, 45->45 VC 0) collected from Input[4][0]
+1046    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1046    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1046    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1046    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1046    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1046    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1046    NoC.Tile[00][00]_(#0).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[1][0]
+1046    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1046    NoC.Tile[01][00]_(#1).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[1][0]
+1046    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1046    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[1][0]
+1046    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1046    NoC.Tile[03][00]_(#3).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[1][0]
+1046    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1046    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[0][0]
+1046    NoC.Tile[00][02]_(#16).Router::txProcess() -->  checking availability of Output[1] for Input[4][0] flit (H0, 16->2 VC 0)
+1046    NoC.Tile[00][02]_(#16).Router::txProcess() -->  reserving direction 1 for flit (H0, 16->2 VC 0)
+1046    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1046    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1046    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[4][0] forwarded to Output[1], flit: (H0, 16->2 VC 0)
+1046    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[0][0]
+1046    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1046    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1046    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1046    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1046    NoC.Tile[00][03]_(#24).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[0][0]
+1046    NoC.Tile[00][04]_(#32).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[0][0]
+1046    NoC.Tile[05][05]_(#45).Router::txProcess() --> o = 4
+1046    NoC.Tile[05][05]_(#45).Router::txProcess() --> Input[4][0] forwarded to Output[4], flit: (T7, 45->45 VC 0)
+1046    NoC.Tile[05][05]_(#45).Router::txProcess() --> Consumed flit (T7, 45->45 VC 0)
+1047    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1047    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1047    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1047    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1047    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1047    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1047    NoC.Tile[00][00]_(#0).Router::txProcess() --> Input[1][0] forwarded to Output[2], flit: (B4, 7->56 VC 0)
+1047    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1047    NoC.Tile[01][00]_(#1).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B5, 7->56 VC 0)
+1047    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1047    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B6, 7->56 VC 0)
+1047    NoC.Tile[03][00]_(#3).Router::txProcess() --> o = 3
+1047    NoC.Tile[03][00]_(#3).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (T7, 7->56 VC 0)
+1047    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1047    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B3, 7->56 VC 0)
+1047    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1047    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B2, 7->56 VC 0)
+1047    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1047    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B1, 16->2 VC 0) collected from Input[4][0]
+1047    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1047    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1047    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1047    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (H0, 16->2 VC 0) collected from Input[3][0]
+1047    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1047    NoC.Tile[00][03]_(#24).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B1, 7->56 VC 0)
+1047    NoC.Tile[00][04]_(#32).Router::txProcess() -->  checking availability of Output[2] for Input[0][0] flit (H0, 7->56 VC 0)
+1047    NoC.Tile[00][04]_(#32).Router::txProcess() -->  reserving direction 2 for flit (H0, 7->56 VC 0)
+1047    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1047    NoC.Tile[00][04]_(#32).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (H0, 7->56 VC 0)
+1048    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1048    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1048    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1048    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1048    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1048    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1048    NoC.Tile[00][00]_(#0).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[1][0]
+1048    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1048    NoC.Tile[01][00]_(#1).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[1][0]
+1048    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1048    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[1][0]
+1048    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1048    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[0][0]
+1048    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1048    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1048    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[4][0] forwarded to Output[1], flit: (B1, 16->2 VC 0)
+1048    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[0][0]
+1048    NoC.Tile[01][02]_(#17).Router::txProcess() -->  checking availability of Output[1] for Input[3][0] flit (H0, 16->2 VC 0)
+1048    NoC.Tile[01][02]_(#17).Router::txProcess() -->  reserving direction 1 for flit (H0, 16->2 VC 0)
+1048    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1048    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1048    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1048    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1048    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[3][0] forwarded to Output[1], flit: (H0, 16->2 VC 0)
+1048    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1048    NoC.Tile[00][03]_(#24).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[0][0]
+1048    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1048    NoC.Tile[00][04]_(#32).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[0][0]
+1048    NoC.Tile[00][05]_(#40).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[0][0]
+1049    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1049    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1049    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1049    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1049    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1049    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1049    NoC.Tile[00][00]_(#0).Router::txProcess() --> Input[1][0] forwarded to Output[2], flit: (B5, 7->56 VC 0)
+1049    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1049    NoC.Tile[01][00]_(#1).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (B6, 7->56 VC 0)
+1049    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 3
+1049    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (T7, 7->56 VC 0)
+1049    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1049    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B4, 7->56 VC 0)
+1049    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1049    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B3, 7->56 VC 0)
+1049    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1049    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B2, 16->2 VC 0) collected from Input[4][0]
+1049    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1049    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1049    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1049    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1049    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B1, 16->2 VC 0) collected from Input[3][0]
+1049    NoC.Tile[02][02]_(#18).Router::rxProcess() -->  Flit (H0, 16->2 VC 0) collected from Input[3][0]
+1049    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1049    NoC.Tile[00][03]_(#24).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B2, 7->56 VC 0)
+1049    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1049    NoC.Tile[00][04]_(#32).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B1, 7->56 VC 0)
+1049    NoC.Tile[00][05]_(#40).Router::txProcess() -->  checking availability of Output[2] for Input[0][0] flit (H0, 7->56 VC 0)
+1049    NoC.Tile[00][05]_(#40).Router::txProcess() -->  reserving direction 2 for flit (H0, 7->56 VC 0)
+1049    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1049    NoC.Tile[00][05]_(#40).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (H0, 7->56 VC 0)
+1050    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1050    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1050    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1050    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1050    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1050    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1050    NoC.Tile[00][00]_(#0).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[1][0]
+1050    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1050    NoC.Tile[01][00]_(#1).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[1][0]
+1050    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1050    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[0][0]
+1050    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1050    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1050    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[4][0] forwarded to Output[1], flit: (B2, 16->2 VC 0)
+1050    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[0][0]
+1050    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1050    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1050    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1050    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1050    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[3][0] forwarded to Output[1], flit: (B1, 16->2 VC 0)
+1050    NoC.Tile[02][02]_(#18).Router::txProcess() -->  checking availability of Output[0] for Input[3][0] flit (H0, 16->2 VC 0)
+1050    NoC.Tile[02][02]_(#18).Router::txProcess() -->  reserving direction 0 for flit (H0, 16->2 VC 0)
+1050    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1050    NoC.Tile[02][02]_(#18).Router::txProcess() --> Input[3][0] forwarded to Output[0], flit: (H0, 16->2 VC 0)
+1050    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1050    NoC.Tile[00][03]_(#24).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[0][0]
+1050    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1050    NoC.Tile[00][04]_(#32).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[0][0]
+1050    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1050    NoC.Tile[00][05]_(#40).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[0][0]
+1050    NoC.Tile[00][06]_(#48).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[0][0]
+1051    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1051    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1051    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1051    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1051    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1051    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1051    NoC.Tile[00][00]_(#0).Router::txProcess() --> Input[1][0] forwarded to Output[2], flit: (B6, 7->56 VC 0)
+1051    NoC.Tile[01][00]_(#1).Router::txProcess() --> o = 3
+1051    NoC.Tile[01][00]_(#1).Router::txProcess() --> Input[1][0] forwarded to Output[3], flit: (T7, 7->56 VC 0)
+1051    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1051    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B5, 7->56 VC 0)
+1051    NoC.Tile[02][01]_(#10).Router::rxProcess() -->  Flit (H0, 16->2 VC 0) collected from Input[2][0]
+1051    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1051    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B4, 7->56 VC 0)
+1051    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1051    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B3, 16->2 VC 0) collected from Input[4][0]
+1051    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1051    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1051    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1051    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1051    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B2, 16->2 VC 0) collected from Input[3][0]
+1051    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1051    NoC.Tile[02][02]_(#18).Router::rxProcess() -->  Flit (B1, 16->2 VC 0) collected from Input[3][0]
+1051    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1051    NoC.Tile[00][03]_(#24).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B3, 7->56 VC 0)
+1051    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1051    NoC.Tile[00][04]_(#32).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B2, 7->56 VC 0)
+1051    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1051    NoC.Tile[00][05]_(#40).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B1, 7->56 VC 0)
+1051    NoC.Tile[00][06]_(#48).Router::txProcess() -->  checking availability of Output[2] for Input[0][0] flit (H0, 7->56 VC 0)
+1051    NoC.Tile[00][06]_(#48).Router::txProcess() -->  reserving direction 2 for flit (H0, 7->56 VC 0)
+1051    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1051    NoC.Tile[00][06]_(#48).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (H0, 7->56 VC 0)
+1052    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1052    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1052    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1052    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1052    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1052    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1052    NoC.Tile[00][00]_(#0).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[1][0]
+1052    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1052    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[0][0]
+1052    NoC.Tile[02][01]_(#10).Router::txProcess() -->  checking availability of Output[0] for Input[2][0] flit (H0, 16->2 VC 0)
+1052    NoC.Tile[02][01]_(#10).Router::txProcess() -->  reserving direction 0 for flit (H0, 16->2 VC 0)
+1052    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1052    NoC.Tile[02][01]_(#10).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (H0, 16->2 VC 0)
+1052    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1052    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1052    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[4][0] forwarded to Output[1], flit: (B3, 16->2 VC 0)
+1052    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[0][0]
+1052    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1052    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1052    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1052    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1052    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[3][0] forwarded to Output[1], flit: (B2, 16->2 VC 0)
+1052    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1052    NoC.Tile[02][02]_(#18).Router::txProcess() --> Input[3][0] forwarded to Output[0], flit: (B1, 16->2 VC 0)
+1052    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1052    NoC.Tile[00][03]_(#24).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[0][0]
+1052    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1052    NoC.Tile[00][04]_(#32).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[0][0]
+1052    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1052    NoC.Tile[00][05]_(#40).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[0][0]
+1052    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1052    NoC.Tile[00][06]_(#48).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[0][0]
+1052    NoC.Tile[00][07]_(#56).Router::rxProcess() -->  Flit (H0, 7->56 VC 0) collected from Input[0][0]
+1053    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1053    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1053    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1053    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1053    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1053    NoC.Tile[00][00]_(#0).Router::txProcess() --> o = 2
+1053    NoC.Tile[00][00]_(#0).Router::txProcess() --> Input[1][0] forwarded to Output[2], flit: (T7, 7->56 VC 0)
+1053    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (H0, 16->2 VC 0) collected from Input[2][0]
+1053    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1053    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B6, 7->56 VC 0)
+1053    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1053    NoC.Tile[02][01]_(#10).Router::rxProcess() -->  Flit (B1, 16->2 VC 0) collected from Input[2][0]
+1053    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1053    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B5, 7->56 VC 0)
+1053    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1053    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B4, 16->2 VC 0) collected from Input[4][0]
+1053    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1053    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1053    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1053    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1053    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B3, 16->2 VC 0) collected from Input[3][0]
+1053    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1053    NoC.Tile[02][02]_(#18).Router::rxProcess() -->  Flit (B2, 16->2 VC 0) collected from Input[3][0]
+1053    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1053    NoC.Tile[00][03]_(#24).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B4, 7->56 VC 0)
+1053    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1053    NoC.Tile[00][04]_(#32).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B3, 7->56 VC 0)
+1053    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1053    NoC.Tile[00][05]_(#40).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B2, 7->56 VC 0)
+1053    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1053    NoC.Tile[00][06]_(#48).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B1, 7->56 VC 0)
+1053    NoC.Tile[00][07]_(#56).Router::txProcess() -->  checking availability of Output[4] for Input[0][0] flit (H0, 7->56 VC 0)
+1053    NoC.Tile[00][07]_(#56).Router::txProcess() -->  reserving direction 4 for flit (H0, 7->56 VC 0)
+1053    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1053    NoC.Tile[00][07]_(#56).Router::txProcess() --> Input[0][0] forwarded to Output[4], flit: (H0, 7->56 VC 0)
+1053    NoC.Tile[00][07]_(#56).Router::txProcess() --> Consumed flit (H0, 7->56 VC 0)
+1054    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1054    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1054    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1054    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1054    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1054    NoC.Tile[02][00]_(#2).Router::txProcess() -->  checking availability of Output[4] for Input[2][0] flit (H0, 16->2 VC 0)
+1054    NoC.Tile[02][00]_(#2).Router::txProcess() -->  reserving direction 4 for flit (H0, 16->2 VC 0)
+1054    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1054    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[2][0] forwarded to Output[4], flit: (H0, 16->2 VC 0)
+1054    NoC.Tile[02][00]_(#2).Router::txProcess() --> Consumed flit (H0, 16->2 VC 0)
+1054    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1054    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[0][0]
+1054    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1054    NoC.Tile[02][01]_(#10).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B1, 16->2 VC 0)
+1054    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1054    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1054    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[4][0] forwarded to Output[1], flit: (B4, 16->2 VC 0)
+1054    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[0][0]
+1054    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1054    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1054    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1054    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1054    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[3][0] forwarded to Output[1], flit: (B3, 16->2 VC 0)
+1054    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1054    NoC.Tile[02][02]_(#18).Router::txProcess() --> Input[3][0] forwarded to Output[0], flit: (B2, 16->2 VC 0)
+1054    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1054    NoC.Tile[00][03]_(#24).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[0][0]
+1054    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1054    NoC.Tile[00][04]_(#32).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[0][0]
+1054    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1054    NoC.Tile[00][05]_(#40).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[0][0]
+1054    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1054    NoC.Tile[00][06]_(#48).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[0][0]
+1054    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1054    NoC.Tile[00][07]_(#56).Router::rxProcess() -->  Flit (B1, 7->56 VC 0) collected from Input[0][0]
+1055    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1055    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1055    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1055    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1055    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1055    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1055    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B1, 16->2 VC 0) collected from Input[2][0]
+1055    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 2
+1055    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (T7, 7->56 VC 0)
+1055    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1055    NoC.Tile[02][01]_(#10).Router::rxProcess() -->  Flit (B2, 16->2 VC 0) collected from Input[2][0]
+1055    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1055    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B6, 7->56 VC 0)
+1055    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1055    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B5, 16->2 VC 0) collected from Input[4][0]
+1055    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1055    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1055    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1055    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1055    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B4, 16->2 VC 0) collected from Input[3][0]
+1055    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1055    NoC.Tile[02][02]_(#18).Router::rxProcess() -->  Flit (B3, 16->2 VC 0) collected from Input[3][0]
+1055    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1055    NoC.Tile[00][03]_(#24).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B5, 7->56 VC 0)
+1055    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1055    NoC.Tile[00][04]_(#32).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B4, 7->56 VC 0)
+1055    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1055    NoC.Tile[00][05]_(#40).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B3, 7->56 VC 0)
+1055    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1055    NoC.Tile[00][06]_(#48).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B2, 7->56 VC 0)
+1055    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1055    NoC.Tile[00][07]_(#56).Router::txProcess() --> Input[0][0] forwarded to Output[4], flit: (B1, 7->56 VC 0)
+1055    NoC.Tile[00][07]_(#56).Router::txProcess() --> Consumed flit (B1, 7->56 VC 0)
+1056    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1056    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1056    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1056    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1056    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1056    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1056    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[2][0] forwarded to Output[4], flit: (B1, 16->2 VC 0)
+1056    NoC.Tile[02][00]_(#2).Router::txProcess() --> Consumed flit (B1, 16->2 VC 0)
+1056    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1056    NoC.Tile[02][01]_(#10).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B2, 16->2 VC 0)
+1056    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1056    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1056    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[4][0] forwarded to Output[1], flit: (B5, 16->2 VC 0)
+1056    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[0][0]
+1056    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1056    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1056    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1056    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1056    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[3][0] forwarded to Output[1], flit: (B4, 16->2 VC 0)
+1056    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1056    NoC.Tile[02][02]_(#18).Router::txProcess() --> Input[3][0] forwarded to Output[0], flit: (B3, 16->2 VC 0)
+1056    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1056    NoC.Tile[00][03]_(#24).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[0][0]
+1056    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1056    NoC.Tile[00][04]_(#32).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[0][0]
+1056    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1056    NoC.Tile[00][05]_(#40).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[0][0]
+1056    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1056    NoC.Tile[00][06]_(#48).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[0][0]
+1056    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1056    NoC.Tile[00][07]_(#56).Router::rxProcess() -->  Flit (B2, 7->56 VC 0) collected from Input[0][0]
+1057    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1057    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1057    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1057    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1057    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1057    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1057    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B2, 16->2 VC 0) collected from Input[2][0]
+1057    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1057    NoC.Tile[02][01]_(#10).Router::rxProcess() -->  Flit (B3, 16->2 VC 0) collected from Input[2][0]
+1057    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 2
+1057    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (T7, 7->56 VC 0)
+1057    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1057    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (B6, 16->2 VC 0) collected from Input[4][0]
+1057    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1057    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1057    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1057    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1057    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B5, 16->2 VC 0) collected from Input[3][0]
+1057    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1057    NoC.Tile[02][02]_(#18).Router::rxProcess() -->  Flit (B4, 16->2 VC 0) collected from Input[3][0]
+1057    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1057    NoC.Tile[00][03]_(#24).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B6, 7->56 VC 0)
+1057    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1057    NoC.Tile[00][04]_(#32).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B5, 7->56 VC 0)
+1057    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1057    NoC.Tile[00][05]_(#40).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B4, 7->56 VC 0)
+1057    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1057    NoC.Tile[00][06]_(#48).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B3, 7->56 VC 0)
+1057    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1057    NoC.Tile[00][07]_(#56).Router::txProcess() --> Input[0][0] forwarded to Output[4], flit: (B2, 7->56 VC 0)
+1057    NoC.Tile[00][07]_(#56).Router::txProcess() --> Consumed flit (B2, 7->56 VC 0)
+1058    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1058    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1058    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1058    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1058    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1058    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1058    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[2][0] forwarded to Output[4], flit: (B2, 16->2 VC 0)
+1058    NoC.Tile[02][00]_(#2).Router::txProcess() --> Consumed flit (B2, 16->2 VC 0)
+1058    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1058    NoC.Tile[02][01]_(#10).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B3, 16->2 VC 0)
+1058    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1058    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[4][0] forwarded to Output[1], flit: (B6, 16->2 VC 0)
+1058    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1058    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1058    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1058    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1058    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[3][0] forwarded to Output[1], flit: (B5, 16->2 VC 0)
+1058    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1058    NoC.Tile[02][02]_(#18).Router::txProcess() --> Input[3][0] forwarded to Output[0], flit: (B4, 16->2 VC 0)
+1058    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1058    NoC.Tile[00][03]_(#24).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[0][0]
+1058    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1058    NoC.Tile[00][04]_(#32).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[0][0]
+1058    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1058    NoC.Tile[00][05]_(#40).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[0][0]
+1058    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1058    NoC.Tile[00][06]_(#48).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[0][0]
+1058    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1058    NoC.Tile[00][07]_(#56).Router::rxProcess() -->  Flit (B3, 7->56 VC 0) collected from Input[0][0]
+1059    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1059    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1059    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1059    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1059    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1059    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1059    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B3, 16->2 VC 0) collected from Input[2][0]
+1059    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1059    NoC.Tile[02][01]_(#10).Router::rxProcess() -->  Flit (B4, 16->2 VC 0) collected from Input[2][0]
+1059    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1059    NoC.Tile[00][02]_(#16).Router::rxProcess() -->  Flit (T7, 16->2 VC 0) collected from Input[4][0]
+1059    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1059    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1059    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1059    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1059    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (B6, 16->2 VC 0) collected from Input[3][0]
+1059    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1059    NoC.Tile[02][02]_(#18).Router::rxProcess() -->  Flit (B5, 16->2 VC 0) collected from Input[3][0]
+1059    NoC.Tile[00][03]_(#24).Router::txProcess() --> o = 2
+1059    NoC.Tile[00][03]_(#24).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (T7, 7->56 VC 0)
+1059    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1059    NoC.Tile[00][04]_(#32).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B6, 7->56 VC 0)
+1059    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1059    NoC.Tile[00][05]_(#40).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B5, 7->56 VC 0)
+1059    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1059    NoC.Tile[00][06]_(#48).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B4, 7->56 VC 0)
+1059    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1059    NoC.Tile[00][07]_(#56).Router::txProcess() --> Input[0][0] forwarded to Output[4], flit: (B3, 7->56 VC 0)
+1059    NoC.Tile[00][07]_(#56).Router::txProcess() --> Consumed flit (B3, 7->56 VC 0)
+1060    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1060    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1060    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1060    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1060    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1060    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1060    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[2][0] forwarded to Output[4], flit: (B3, 16->2 VC 0)
+1060    NoC.Tile[02][00]_(#2).Router::txProcess() --> Consumed flit (B3, 16->2 VC 0)
+1060    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1060    NoC.Tile[02][01]_(#10).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B4, 16->2 VC 0)
+1060    NoC.Tile[00][02]_(#16).Router::txProcess() --> o = 1
+1060    NoC.Tile[00][02]_(#16).Router::txProcess() --> Input[4][0] forwarded to Output[1], flit: (T7, 16->2 VC 0)
+1060    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1060    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1060    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1060    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1060    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[3][0] forwarded to Output[1], flit: (B6, 16->2 VC 0)
+1060    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1060    NoC.Tile[02][02]_(#18).Router::txProcess() --> Input[3][0] forwarded to Output[0], flit: (B5, 16->2 VC 0)
+1060    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1060    NoC.Tile[00][04]_(#32).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[0][0]
+1060    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1060    NoC.Tile[00][05]_(#40).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[0][0]
+1060    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1060    NoC.Tile[00][06]_(#48).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[0][0]
+1060    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1060    NoC.Tile[00][07]_(#56).Router::rxProcess() -->  Flit (B4, 7->56 VC 0) collected from Input[0][0]
+1061    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1061    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1061    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1061    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1061    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1061    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1061    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B4, 16->2 VC 0) collected from Input[2][0]
+1061    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1061    NoC.Tile[02][01]_(#10).Router::rxProcess() -->  Flit (B5, 16->2 VC 0) collected from Input[2][0]
+1061    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1061    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1061    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1061    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1061    NoC.Tile[01][02]_(#17).Router::rxProcess() -->  Flit (T7, 16->2 VC 0) collected from Input[3][0]
+1061    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1061    NoC.Tile[02][02]_(#18).Router::rxProcess() -->  Flit (B6, 16->2 VC 0) collected from Input[3][0]
+1061    NoC.Tile[00][04]_(#32).Router::txProcess() --> o = 2
+1061    NoC.Tile[00][04]_(#32).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (T7, 7->56 VC 0)
+1061    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1061    NoC.Tile[00][05]_(#40).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B6, 7->56 VC 0)
+1061    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1061    NoC.Tile[00][06]_(#48).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B5, 7->56 VC 0)
+1061    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1061    NoC.Tile[00][07]_(#56).Router::txProcess() --> Input[0][0] forwarded to Output[4], flit: (B4, 7->56 VC 0)
+1061    NoC.Tile[00][07]_(#56).Router::txProcess() --> Consumed flit (B4, 7->56 VC 0)
+1062    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1062    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1062    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1062    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1062    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1062    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1062    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[2][0] forwarded to Output[4], flit: (B4, 16->2 VC 0)
+1062    NoC.Tile[02][00]_(#2).Router::txProcess() --> Consumed flit (B4, 16->2 VC 0)
+1062    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1062    NoC.Tile[02][01]_(#10).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B5, 16->2 VC 0)
+1062    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1062    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1062    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1062    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 1
+1062    NoC.Tile[01][02]_(#17).Router::txProcess() --> Input[3][0] forwarded to Output[1], flit: (T7, 16->2 VC 0)
+1062    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1062    NoC.Tile[02][02]_(#18).Router::txProcess() --> Input[3][0] forwarded to Output[0], flit: (B6, 16->2 VC 0)
+1062    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1062    NoC.Tile[00][05]_(#40).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[0][0]
+1062    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1062    NoC.Tile[00][06]_(#48).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[0][0]
+1062    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1062    NoC.Tile[00][07]_(#56).Router::rxProcess() -->  Flit (B5, 7->56 VC 0) collected from Input[0][0]
+1063    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1063    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1063    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1063    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1063    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1063    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1063    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B5, 16->2 VC 0) collected from Input[2][0]
+1063    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1063    NoC.Tile[02][01]_(#10).Router::rxProcess() -->  Flit (B6, 16->2 VC 0) collected from Input[2][0]
+1063    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1063    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1063    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1063    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1063    NoC.Tile[02][02]_(#18).Router::rxProcess() -->  Flit (T7, 16->2 VC 0) collected from Input[3][0]
+1063    NoC.Tile[00][05]_(#40).Router::txProcess() --> o = 2
+1063    NoC.Tile[00][05]_(#40).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (T7, 7->56 VC 0)
+1063    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1063    NoC.Tile[00][06]_(#48).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (B6, 7->56 VC 0)
+1063    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1063    NoC.Tile[00][07]_(#56).Router::txProcess() --> Input[0][0] forwarded to Output[4], flit: (B5, 7->56 VC 0)
+1063    NoC.Tile[00][07]_(#56).Router::txProcess() --> Consumed flit (B5, 7->56 VC 0)
+1064    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1064    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1064    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1064    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1064    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1064    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1064    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[2][0] forwarded to Output[4], flit: (B5, 16->2 VC 0)
+1064    NoC.Tile[02][00]_(#2).Router::txProcess() --> Consumed flit (B5, 16->2 VC 0)
+1064    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1064    NoC.Tile[02][01]_(#10).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (B6, 16->2 VC 0)
+1064    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1064    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1064    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1064    NoC.Tile[02][02]_(#18).Router::txProcess() --> o = 0
+1064    NoC.Tile[02][02]_(#18).Router::txProcess() --> Input[3][0] forwarded to Output[0], flit: (T7, 16->2 VC 0)
+1064    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1064    NoC.Tile[00][06]_(#48).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[0][0]
+1064    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1064    NoC.Tile[00][07]_(#56).Router::rxProcess() -->  Flit (B6, 7->56 VC 0) collected from Input[0][0]
+1065    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1065    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1065    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1065    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1065    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1065    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1065    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (B6, 16->2 VC 0) collected from Input[2][0]
+1065    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1065    NoC.Tile[02][01]_(#10).Router::rxProcess() -->  Flit (T7, 16->2 VC 0) collected from Input[2][0]
+1065    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1065    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1065    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1065    NoC.Tile[00][06]_(#48).Router::txProcess() --> o = 2
+1065    NoC.Tile[00][06]_(#48).Router::txProcess() --> Input[0][0] forwarded to Output[2], flit: (T7, 7->56 VC 0)
+1065    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1065    NoC.Tile[00][07]_(#56).Router::txProcess() --> Input[0][0] forwarded to Output[4], flit: (B6, 7->56 VC 0)
+1065    NoC.Tile[00][07]_(#56).Router::txProcess() --> Consumed flit (B6, 7->56 VC 0)
+1066    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1066    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1066    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1066    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1066    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1066    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1066    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[2][0] forwarded to Output[4], flit: (B6, 16->2 VC 0)
+1066    NoC.Tile[02][00]_(#2).Router::txProcess() --> Consumed flit (B6, 16->2 VC 0)
+1066    NoC.Tile[02][01]_(#10).Router::txProcess() --> o = 0
+1066    NoC.Tile[02][01]_(#10).Router::txProcess() --> Input[2][0] forwarded to Output[0], flit: (T7, 16->2 VC 0)
+1066    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1066    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1066    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1066    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1066    NoC.Tile[00][07]_(#56).Router::rxProcess() -->  Flit (T7, 7->56 VC 0) collected from Input[0][0]
+1067    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1067    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1067    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1067    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1067    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1067    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1067    NoC.Tile[02][00]_(#2).Router::rxProcess() -->  Flit (T7, 16->2 VC 0) collected from Input[2][0]
+1067    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1067    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1067    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1067    NoC.Tile[00][07]_(#56).Router::txProcess() --> o = 4
+1067    NoC.Tile[00][07]_(#56).Router::txProcess() --> Input[0][0] forwarded to Output[4], flit: (T7, 7->56 VC 0)
+1067    NoC.Tile[00][07]_(#56).Router::txProcess() --> Consumed flit (T7, 7->56 VC 0)
+1068    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1068    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1068    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1068    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1068    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1068    NoC.Tile[02][00]_(#2).Router::txProcess() --> o = 4
+1068    NoC.Tile[02][00]_(#2).Router::txProcess() --> Input[2][0] forwarded to Output[4], flit: (T7, 16->2 VC 0)
+1068    NoC.Tile[02][00]_(#2).Router::txProcess() --> Consumed flit (T7, 16->2 VC 0)
+1068    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1068    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1068    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1069    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1069    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1069    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1069    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1069    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1069    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1069    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1069    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1070    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1070    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1070    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1070    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1070    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1070    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (H0, 8->4 VC 0) collected from Input[4][0]
+1070    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1070    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1070    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1071    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1071    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1071    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1071    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1071    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1071    NoC.Tile[00][01]_(#8).Router::txProcess() -->  checking availability of Output[5] for Input[4][0] flit (H0, 8->4 VC 0)
+1071    NoC.Tile[00][01]_(#8).Router::txProcess() -->  reserving direction 5 for flit (H0, 8->4 VC 0)
+1071    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1071    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[4][0] forwarded to Output[5], flit: (H0, 8->4 VC 0)
+1071    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1071    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1071    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1072    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1072    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1072    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1072    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1072    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1072    NoC.Hub_0::tileToAntennaProcess() --> Reading (H0, 8->4 VC 0) from signal flit_rx[1]
+1072    NoC.Hub_0::tileToAntennaProcess() --> Storing (H0, 8->4 VC 0) on buffer_from_tile[1][0]
+1072    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1072    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B1, 8->4 VC 0) collected from Input[4][0]
+1072    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1072    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1072    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1073    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_1
+1073    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[1][0] not empty 
+1073    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1073    NoC.Hub_0::tileToAntennaProcess() --> Checking reservation availability of Channel 0 by Hub port[1][0] for flit (H0, 8->4 VC 0)
+1073    NoC.Hub_0::tileToAntennaProcess() --> Reservation of channel 0 from Hub port[1][0] by flit (H0, 8->4 VC 0)
+1073    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1073    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1073    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1073    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1073    NoC.Hub_0::tileToAntennaProcess() --> Flit (H0, 8->4 VC 0) moved from buffer_from_tile[1][0]  to buffer_tx[0] 
+1073    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1073    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[4][0] forwarded to Output[5], flit: (B1, 8->4 VC 0)
+1073    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1073    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1073    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1074    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1074    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1074    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1074    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1074    NoC.Hub_0::tileToAntennaProcess() --> Reading (B1, 8->4 VC 0) from signal flit_rx[1]
+1074    NoC.Hub_0::tileToAntennaProcess() --> Storing (B1, 8->4 VC 0) on buffer_from_tile[1][0]
+1074    NoC.Hub_1::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1074    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1074    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B2, 8->4 VC 0) collected from Input[4][0]
+1074    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1074    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1074    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1075    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_2
+1075    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[1][0] not empty 
+1075    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1075    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1075    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1075    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1075    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1075    NoC.Hub_0::tileToAntennaProcess() --> Flit (B1, 8->4 VC 0) moved from buffer_from_tile[1][0]  to buffer_tx[0] 
+1075    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1075    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[4][0] forwarded to Output[5], flit: (B2, 8->4 VC 0)
+1075    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1075    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1075    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1076    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1076    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1076    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1076    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1076    NoC.Hub_0::tileToAntennaProcess() --> Reading (B2, 8->4 VC 0) from signal flit_rx[1]
+1076    NoC.Hub_0::tileToAntennaProcess() --> Storing (B2, 8->4 VC 0) on buffer_from_tile[1][0]
+1076    NoC.Hub_2::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1076    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1076    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B3, 8->4 VC 0) collected from Input[4][0]
+1076    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1076    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1076    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1077    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_3
+1077    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[1][0] not empty 
+1077    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1077    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1077    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1077    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1077    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1077    NoC.Hub_0::tileToAntennaProcess() --> Flit (B2, 8->4 VC 0) moved from buffer_from_tile[1][0]  to buffer_tx[0] 
+1077    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1077    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[4][0] forwarded to Output[5], flit: (B3, 8->4 VC 0)
+1077    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1077    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1077    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1078    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1078    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1078    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1078    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1078    NoC.Hub_0::tileToAntennaProcess() --> Reading (B3, 8->4 VC 0) from signal flit_rx[1]
+1078    NoC.Hub_0::tileToAntennaProcess() --> Storing (B3, 8->4 VC 0) on buffer_from_tile[1][0]
+1078    NoC.Hub_3::txRadioProcessTokenPacket() --> *** [Ch0] Buffer_tx empty and no trasmission in progress, releasing token
+1078    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1078    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B4, 8->4 VC 0) collected from Input[4][0]
+1078    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1078    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1078    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1079    NoC.tokenring::updateTokenPacket() --> *** Token of channel 0 has been assigned to Hub_0
+1079    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[1][0] not empty 
+1079    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1079    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1079    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1079    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1079    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1079    NoC.Hub_0::tileToAntennaProcess() --> Flit (B3, 8->4 VC 0) moved from buffer_from_tile[1][0]  to buffer_tx[0] 
+1079    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1079    NoC.Tile[00][01]_(#8).Router::txProcess() --> Input[4][0] forwarded to Output[5], flit: (B4, 8->4 VC 0)
+1079    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1079    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1079    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1
+1080    NoC.Hub_0::txRadioProcessTokenPacket() --> *** [Ch0] Requesting transmission event of flit (H0, 8->4 VC 0)
+1080    NoC.Hub_0::tileToAntennaProcess() --> Reservation: buffer_from_tile[3][0] not empty 
+1080    NoC.Hub_0::tileToAntennaProcess() --> got the route
+1080    NoC.Hub_0::tileToAntennaProcess() -->  checking availability of Output[4] for Input[3][0] flit (H0, 36->9 VC 0)
+1080    NoC.Hub_0::tileToAntennaProcess() -->  RT_ALREADY_SAME reserved direction 4 for flit (H0, 36->9 VC 0)
+1080    NoC.Hub_0::tileToAntennaProcess() --> Reading (B4, 8->4 VC 0) from signal flit_rx[1]
+1080    NoC.Hub_0::tileToAntennaProcess() --> Storing (B4, 8->4 VC 0) on buffer_from_tile[1][0]
+1080    NoC.Tile[00][01]_(#8).Router::txProcess() --> o = 5
+1080    NoC.Tile[00][01]_(#8).Router::rxProcess() -->  Flit (B5, 8->4 VC 0) collected from Input[4][0]
+1080    NoC.Tile[01][02]_(#17).Router::txProcess() --> o = 5
+1080    NoC.Tile[01][02]_(#17).Router::txProcess() -->  Cannot forward Input[2][0] to Output[5], flit: (B4, 36->9 VC 0)
+1080    NoC.Tile[01][02]_(#17).Router::txProcess() -->  **DEBUG buffer_full_status_tx 1

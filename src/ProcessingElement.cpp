@@ -90,6 +90,7 @@ void ProcessingElement::txProcess()
 		}
 	}
     }
+    //LOG << "pe " << local_id <<" can tx" << endl;
 }
 
 Flit ProcessingElement::nextFlit()

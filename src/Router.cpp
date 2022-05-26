@@ -93,7 +93,7 @@ void Router::rxProcess()
 void Router::txProcess()
 {
 
-  cout << "router "<< local_id <<" trying to send" << endl;
+  //cout << "router "<< local_id <<" trying to send" << endl;
 
   if (reset.read()) 
     {
@@ -193,6 +193,7 @@ void Router::txProcess()
 	      int rnd_idx = rand()%reservations.size();
 
 	      int o = reservations[rnd_idx].first;
+	      LOG << "o = " << o <<endl;
 	      int vc = reservations[rnd_idx].second;
 	     // LOG<< "found reservation from input= " << i << "_to output= "<<o<<endl;
 	      // can happen
@@ -202,6 +203,7 @@ void Router::txProcess()
 		  Flit flit = buffer[i][vc].Front();
 		  //LOG<< "*****TX***Direction= "<<i<< "************"<<endl;
 		  //LOG<<"_cl_tx="<<current_level_tx[o]<<"req_tx="<<req_tx[o].read()<<" _ack= "<<ack_tx[o].read()<< endl;
+		  
 		  
 		  if ( (current_level_tx[o] == ack_tx[o].read()) &&
 		       (buffer_full_status_tx[o].read().mask[vc] == false) ) 
@@ -271,7 +273,7 @@ void Router::txProcess()
       if ((int)(sc_time_stamp().to_double() / GlobalParams::clock_period_ps)%2==0)
 	  reservation_table.updateIndex();
     }
-    cout << "router "<< local_id <<" can send" << endl;  
+    //cout << "router "<< local_id <<" can send" << endl;  
 }
 
 NoP_data Router::getCurrentNoPData()

@@ -97,7 +97,6 @@ typedef struct {
 } ChannelConfig;
 
 typedef struct {
-    int location;
     vector<int> attachedNodes;
     vector<int> rxChannels;
     vector<int> txChannels;

@@ -92,12 +92,13 @@ void loadConfiguration() {
     GlobalParams::use_winoc = readParam<bool>(config, "use_winoc");
     GlobalParams::winoc_dst_hops = readParam<int>(config, "winoc_dst_hops",0);
     GlobalParams::use_powermanager = readParam<bool>(config, "use_wirxsleep");
-    //GlobalParams::HubLocations = readParam<vector<int>>(config, "Hublocations");  
-
+    GlobalParams::subnetsz = readParam<int>(config, "subnetsz");
+    
     set<int> channelSet;
 
     GlobalParams::default_hub_configuration = config["Hubs"]["defaults"].as<HubConfig>();
-
+    GlobalParams::HubLocations = config["Hubs"]["locations"].as<vector<int>>();
+    
     for(YAML::const_iterator hubs_it = config["Hubs"].begin(); 
         hubs_it != config["Hubs"].end();
         ++hubs_it)
@@ -109,12 +110,14 @@ void loadConfiguration() {
         YAML::Node hub_config_node = hubs_it->second;
 
         GlobalParams::hub_configuration[hub_id] = hub_config_node.as<HubConfig>();
-        GlobalParams::HubLocations.push_back(GlobalParams::hub_configuration[hub_id].location);
 
         copy(GlobalParams::hub_configuration[hub_id].rxChannels.begin(), GlobalParams::hub_configuration[hub_id].rxChannels.end(), inserter(channelSet, channelSet.end()));
         copy(GlobalParams::hub_configuration[hub_id].txChannels.begin(), GlobalParams::hub_configuration[hub_id].txChannels.end(), inserter(channelSet, channelSet.end()));
     }
 
+	for(int loc : GlobalParams::HubLocations) cout<<loc<<" ";
+	cout<<endl;
+	
     YAML::Node default_channel_config_node = config["RadioChannels"]["defaults"];
     GlobalParams::default_channel_configuration = default_channel_config_node.as<ChannelConfig>();
 

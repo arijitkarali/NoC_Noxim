@@ -2281,20 +2281,41 @@ void NoC::buildMesh()
 	    t[i][j]->hub_flit_tx(flit[i][j].to_hub);
 	    t[i][j]->hub_ack_tx(ack[i][j].from_hub);
 	    t[i][j]->hub_buffer_full_status_tx(buffer_full_status[i][j].from_hub);
-
-	    // important: delete the router when the tile has hub
-	    if(find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),tile_id)!=GlobalParams::HubLocations.end())
-	    	delete t[i][j]->r;
 	    
+
+	    // important: delete the router when the tile has hub and bind hub-pe
+	    auto it = find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),tile_id);
+	    if(it != GlobalParams::HubLocations.end())
+	    {
+	    	delete t[i][j]->r;
+	    	
+	    	// binding the hub->pe ports
+	    	
+            	int hub_id = it - GlobalParams::HubLocations.begin();
+            	int port = hub[hub_id] -> num_ports - 1; 
+            	
+		hub[hub_id]->req_rx[port](t[i][j]->pe->req_rx[1]);
+		hub[hub_id]->flit_rx[port](t[i][j]->pe->flit_rx[1]);
+		hub[hub_id]->ack_rx[port](t[i][j]->pe->ack_rx[1]);
+		hub[hub_id]->buffer_full_status_rx[port](t[i][j]->pe->buffer_full_status_rx[1]);
+
+		hub[hub_id]->flit_tx[port](t[i][j]->pe->flit_tx[1]);
+		hub[hub_id]->req_tx[port](t[i][j]->pe->req_tx[1]);
+		hub[hub_id]->ack_tx[port](t[i][j]->pe->ack_tx[1]);
+		hub[hub_id]->buffer_full_status_tx[port](t[i][j]->pe->buffer_full_status_tx[1]);
+		
+		cout<< "hub "<<hub_id<<" : hub-pe ports are bound"<<endl;
+		
+	    }
 	    // clear signals for hub attached nodes towards the Hub-tile PE(if needed)
     	    
 	    
 	    
         // TODO: Review port index. Connect each Hub to all its Channels 
-        map<int, vector<int>>::iterator it = GlobalParams::hub_for_tile.find(tile_id);
-        if (it != GlobalParams::hub_for_tile.end())
+        map<int, vector<int>>::iterator iter = GlobalParams::hub_for_tile.find(tile_id);
+        if (iter != GlobalParams::hub_for_tile.end())
         {
-            for(int hub_id : it->second)
+            for(int hub_id : iter->second)
             {
 		    //int hub_id = GlobalParams::hub_for_tile[tile_id];
 
@@ -2313,7 +2334,11 @@ void NoC::buildMesh()
 		    hub[hub_id]->req_tx[port](req[i][j].from_hub);
 		    hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
 		    hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
+		    
+		    cout<< "hub "<<hub_id<<" : bound with "<< t[i][j]->local_id <<endl;
             }
+            
+            
         }
 
         // Map buffer level signals (analogy with req_tx/rx port mapping)
@@ -2382,7 +2407,7 @@ void NoC::buildMesh()
 
     }
     
-    //cout << "NoC works" << endl;
+    cout << "NoC works" << endl;
 
 }
 
