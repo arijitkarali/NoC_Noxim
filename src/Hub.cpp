@@ -621,9 +621,10 @@ void Hub::tileToAntennaProcess()
 	// 2nd phase: Forwarding
 	for (int i = 0; i < num_ports; i++)
 	{
+		vector<pair<int,int> > reservations;
+		if(i<num_ports-1) reservations = tile2antenna_reservation_table.getReservations(i);
+		else reservations = reservation_table.getReservations(i);
 		
-		vector<pair<int,int> > reservations = tile2antenna_reservation_table.getReservations(i);
-
 		if (reservations.size()!=0)
 		{
 			int rnd_idx = rand()%reservations.size();

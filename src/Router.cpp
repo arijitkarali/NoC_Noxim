@@ -193,7 +193,7 @@ void Router::txProcess()
 	      int rnd_idx = rand()%reservations.size();
 
 	      int o = reservations[rnd_idx].first;
-	      LOG << "o = " << o <<endl;
+	      //LOG << "o = " << o <<endl;
 	      int vc = reservations[rnd_idx].second;
 	     // LOG<< "found reservation from input= " << i << "_to output= "<<o<<endl;
 	      // can happen

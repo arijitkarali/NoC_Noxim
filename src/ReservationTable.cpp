@@ -44,6 +44,8 @@ vector<pair<int,int> > ReservationTable::getReservations(const int port_in)
 	if (rtable[o].reservations.size()>0)
 	{
 	    int current_index = rtable[o].index;
+	    //LOG << "current_index = " << current_index <<endl;
+	    
 	    if (rtable[o].reservations[current_index].input == port_in)
 		reservations.push_back(pair<int,int>(o,rtable[o].reservations[current_index].vc));
 	}
