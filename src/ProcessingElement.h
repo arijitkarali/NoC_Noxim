@@ -28,22 +28,22 @@ SC_MODULE(ProcessingElement)
     sc_in_clk clock;		// The input clock for the PE
     sc_in < bool > reset;	// The reset signal for the PE
 
-    sc_in < Flit > flit_rx[2];	// The input channel
-    sc_in < bool > req_rx[2];	// The request associated with the input channel
-    sc_out < bool > ack_rx[2];	// The outgoing ack signal associated with the input channel
-    sc_out < TBufferFullStatus > buffer_full_status_rx[2];	
+    sc_in < Flit > flit_rx;	// The input channel
+    sc_in < bool > req_rx;	// The request associated with the input channel
+    sc_out < bool > ack_rx;	// The outgoing ack signal associated with the input channel
+    sc_out < TBufferFullStatus > buffer_full_status_rx;	
 
-    sc_out < Flit > flit_tx[2];	// The output channel
-    sc_out < bool > req_tx[2];	// The request associated with the output channel
-    sc_in < bool > ack_tx[2];	// The outgoing ack signal associated with the output channel
-    sc_in < TBufferFullStatus > buffer_full_status_tx[2];
+    sc_out < Flit > flit_tx;	// The output channel
+    sc_out < bool > req_tx;	// The request associated with the output channel
+    sc_in < bool > ack_tx;	// The outgoing ack signal associated with the output channel
+    sc_in < TBufferFullStatus > buffer_full_status_tx;
 
     sc_in < int >free_slots_neighbor;
 
     // Registers
     int local_id;		// Unique identification number
-    bool current_level_rx[2];	// Current level for Alternating Bit Protocol (ABP)
-    bool current_level_tx[2];	// Current level for Alternating Bit Protocol (ABP)
+    bool current_level_rx;	// Current level for Alternating Bit Protocol (ABP)
+    bool current_level_tx;	// Current level for Alternating Bit Protocol (ABP)
     queue < Packet > packet_queue;	// Local queue of packets
     bool transmittedAtPreviousCycle;	// Used for distributions with memory
 

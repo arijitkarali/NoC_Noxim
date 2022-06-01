@@ -115,8 +115,7 @@ void loadConfiguration() {
         copy(GlobalParams::hub_configuration[hub_id].txChannels.begin(), GlobalParams::hub_configuration[hub_id].txChannels.end(), inserter(channelSet, channelSet.end()));
     }
 
-	for(int loc : GlobalParams::HubLocations) cout<<loc<<" ";
-	cout<<endl;
+	
 	
     YAML::Node default_channel_config_node = config["RadioChannels"]["defaults"];
     GlobalParams::default_channel_configuration = default_channel_config_node.as<ChannelConfig>();

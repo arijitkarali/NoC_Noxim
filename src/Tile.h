@@ -81,28 +81,28 @@ SC_MODULE(Tile)
     local_id = id;
 	
     // Router pin assignments
-	r = new Router("Router");
-	r->clock(clock);
-	r->reset(reset);
-	for (int i = 0; i < DIRECTIONS; i++) {
-	    r->flit_rx[i] (flit_rx[i]);
-	    r->req_rx[i] (req_rx[i]);
-	    r->ack_rx[i] (ack_rx[i]);
-	    r->buffer_full_status_rx[i](buffer_full_status_rx[i]);
+    		r = new Router("Router");
+		r->clock(clock);
+		r->reset(reset);
+		for (int i = 0; i < DIRECTIONS; i++) {
+		    r->flit_rx[i] (flit_rx[i]);
+		    r->req_rx[i] (req_rx[i]);
+		    r->ack_rx[i] (ack_rx[i]);
+		    r->buffer_full_status_rx[i](buffer_full_status_rx[i]);
 
-	    r->flit_tx[i] (flit_tx[i]);
-	    r->req_tx[i] (req_tx[i]);
-	    r->ack_tx[i] (ack_tx[i]);
-	    r->buffer_full_status_tx[i](buffer_full_status_tx[i]);
+		    r->flit_tx[i] (flit_tx[i]);
+		    r->req_tx[i] (req_tx[i]);
+		    r->ack_tx[i] (ack_tx[i]);
+		    r->buffer_full_status_tx[i](buffer_full_status_tx[i]);
 
-	    r->free_slots[i] (free_slots[i]);
-	    r->free_slots_neighbor[i] (free_slots_neighbor[i]);
+		    r->free_slots[i] (free_slots[i]);
+		    r->free_slots_neighbor[i] (free_slots_neighbor[i]);
 
-	    // NoP 
-	    r->NoP_data_out[i] (NoP_data_out[i]);
-	    r->NoP_data_in[i] (NoP_data_in[i]);
-	}
-	
+		    // NoP 
+		    r->NoP_data_out[i] (NoP_data_out[i]);
+		    r->NoP_data_in[i] (NoP_data_in[i]);
+		}
+		
 	// local
 	r->flit_rx[DIRECTION_LOCAL] (flit_tx_local);
 	r->req_rx[DIRECTION_LOCAL] (req_tx_local);
@@ -111,9 +111,8 @@ SC_MODULE(Tile)
 
 	r->flit_tx[DIRECTION_LOCAL] (flit_rx_local);
 	r->req_tx[DIRECTION_LOCAL] (req_rx_local);
-	r->ack_tx[DIRECTION_LOCAL] (ack_rx_local);
+	r->ack_tx[DIRECTION_LOCAL] (ack_rx_local);	
 	r->buffer_full_status_tx[DIRECTION_LOCAL] (buffer_full_status_rx_local);
-
 
 	// hub related
 	r->flit_rx[DIRECTION_HUB] (hub_flit_rx);
@@ -125,36 +124,27 @@ SC_MODULE(Tile)
 	r->req_tx[DIRECTION_HUB] (hub_req_tx);
 	r->ack_tx[DIRECTION_HUB] (hub_ack_tx);
 	r->buffer_full_status_tx[DIRECTION_HUB] (hub_buffer_full_status_tx);
-
+	
+	
+	
 
 	// Processing Element pin assignments
 	pe = new ProcessingElement("ProcessingElement");
 	pe->clock(clock);
 	pe->reset(reset);
 
-	pe->flit_rx[0] (flit_rx_local);
-	pe->req_rx[0] (req_rx_local);
-	pe->ack_rx[0] (ack_rx_local);
-	pe->buffer_full_status_rx[0] (buffer_full_status_rx_local);
+	pe->flit_rx(flit_rx_local);
+	pe->req_rx(req_rx_local);
+	pe->ack_rx(ack_rx_local);
+	pe->buffer_full_status_rx(buffer_full_status_rx_local);
 	
 
-	pe->flit_tx[0] (flit_tx_local);
-	pe->req_tx[0] (req_tx_local);
-	pe->ack_tx[0] (ack_tx_local);
-	pe->buffer_full_status_tx[0] (buffer_full_status_tx_local);
+	pe->flit_tx(flit_tx_local);
+	pe->req_tx(req_tx_local);
+	pe->ack_tx(ack_tx_local);
+	pe->buffer_full_status_tx(buffer_full_status_tx_local);
 	
 	
-	// Adding PE-hub connection
-	pe->flit_rx[1] (hub_flit_rx);
-	pe->req_rx[1] (hub_req_rx);
-	pe->ack_rx[1] (hub_ack_rx);
-	pe->buffer_full_status_rx[1] (hub_buffer_full_status_rx);
-
-	pe->flit_tx[1] (hub_flit_tx);
-	pe->req_tx[1] (hub_req_tx);
-	pe->ack_tx[1] (hub_ack_tx);
-	pe->buffer_full_status_tx[1] (hub_buffer_full_status_tx);
-
 	
 
 	// NoP

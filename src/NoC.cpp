@@ -2199,17 +2199,17 @@ void NoC::buildMesh()
 	    t[i][j] = new Tile(tile_name, tile_id);
 
 	    // Tell to the router its coordinates
-	    t[i][j]->r->configure(j * GlobalParams::mesh_dim_x + i,
+	    
+	    	t[i][j]->r->configure(j * GlobalParams::mesh_dim_x + i,
 				  GlobalParams::stats_warm_up_time,
 				  GlobalParams::buffer_depth,
 				  grtable);
-	    t[i][j]->r->power.configureRouter(GlobalParams::flit_size,
+	    	t[i][j]->r->power.configureRouter(GlobalParams::flit_size,
 		      			      GlobalParams::buffer_depth,
 					      GlobalParams::flit_size,
 					      string(GlobalParams::routing_algorithm),
 					      "default");
 					      
-
 
 	    // Tell to the PE its coordinates
 	    t[i][j]->pe->local_id = j * GlobalParams::mesh_dim_x + i;
@@ -2287,24 +2287,23 @@ void NoC::buildMesh()
 	    auto it = find(GlobalParams::HubLocations.begin(),GlobalParams::HubLocations.end(),tile_id);
 	    if(it != GlobalParams::HubLocations.end())
 	    {
-	    	delete t[i][j]->r;
-	    	
+	    	delete t[i][j] -> r;
 	    	// binding the hub->pe ports
 	    	
             	int hub_id = it - GlobalParams::HubLocations.begin();
             	int port = hub[hub_id] -> num_ports - 1; 
-            	
-		hub[hub_id]->req_rx[port](t[i][j]->pe->req_rx[1]);
-		hub[hub_id]->flit_rx[port](t[i][j]->pe->flit_rx[1]);
-		hub[hub_id]->ack_rx[port](t[i][j]->pe->ack_rx[1]);
-		hub[hub_id]->buffer_full_status_rx[port](t[i][j]->pe->buffer_full_status_rx[1]);
 
-		hub[hub_id]->flit_tx[port](t[i][j]->pe->flit_tx[1]);
-		hub[hub_id]->req_tx[port](t[i][j]->pe->req_tx[1]);
-		hub[hub_id]->ack_tx[port](t[i][j]->pe->ack_tx[1]);
-		hub[hub_id]->buffer_full_status_tx[port](t[i][j]->pe->buffer_full_status_tx[1]);
+            	
+		hub[hub_id]->req_rx[port](t[i][j]->req_tx_local);
+		hub[hub_id]->flit_rx[port](t[i][j]->flit_tx_local);
+		hub[hub_id]->ack_rx[port](t[i][j]->ack_tx_local);
+		hub[hub_id]->buffer_full_status_rx[port](t[i][j]->buffer_full_status_tx_local);
+
+		hub[hub_id]->flit_tx[port](t[i][j]->flit_rx_local);
+		hub[hub_id]->req_tx[port](t[i][j]->req_rx_local);
+		hub[hub_id]->ack_tx[port](t[i][j]->ack_rx_local);
+		hub[hub_id]->buffer_full_status_tx[port](t[i][j]->buffer_full_status_rx_local);
 		
-		cout<< "hub "<<hub_id<<" : hub-pe ports are bound"<<endl;
 		
 	    }
 	    // clear signals for hub attached nodes towards the Hub-tile PE(if needed)
@@ -2335,7 +2334,7 @@ void NoC::buildMesh()
 		    hub[hub_id]->ack_tx[port](ack[i][j].to_hub);
 		    hub[hub_id]->buffer_full_status_tx[port](buffer_full_status[i][j].to_hub);
 		    
-		    cout<< "hub "<<hub_id<<" : bound with "<< t[i][j]->local_id <<endl;
+		    
             }
             
             
@@ -2407,7 +2406,7 @@ void NoC::buildMesh()
 
     }
     
-    cout << "NoC works" << endl;
+
 
 }
 
@@ -2454,5 +2453,15 @@ void NoC::asciiMonitor()
 			cout << endl;
 		}
 	}
+}
+
+vector<int> NoC::faultGenerator()
+{
+	
+}
+
+void NoC::invalidate(int x, int y, int port)
+{
+	
 }
 

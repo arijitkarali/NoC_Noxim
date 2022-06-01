@@ -204,7 +204,7 @@ void Router::txProcess()
 		  //LOG<< "*****TX***Direction= "<<i<< "************"<<endl;
 		  //LOG<<"_cl_tx="<<current_level_tx[o]<<"req_tx="<<req_tx[o].read()<<" _ack= "<<ack_tx[o].read()<< endl;
 		  
-		  
+		  //LOG << "current_level_tx[o] = " << current_level_tx[o] << " ack_tx[o].read() = " << ack_tx[o].read()<< endl;
 		  if ( (current_level_tx[o] == ack_tx[o].read()) &&
 		       (buffer_full_status_tx[o].read().mask[vc] == false) ) 
 		  {

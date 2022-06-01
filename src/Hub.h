@@ -99,7 +99,7 @@ SC_MODULE(Hub)
     map<int,int> buffer_to_tile_poweroff_cycles;
 
     int wireless_communications_counter;
-
+    enum transmission_type{wired, wireless} tt;
     // Constructor
 
     Hub(sc_module_name nm, int id, TokenRing * tr): sc_module(nm) {
@@ -119,7 +119,6 @@ SC_MODULE(Hub)
         local_id = id;
 	token_ring = tr;
         num_ports = GlobalParams::hub_configuration[local_id].attachedNodes.size()+1; // 4 neighbour + 1 local
-        cout << "hub "<< local_id << " has " <<num_ports << " ports" << endl;
         attachedNodes = GlobalParams::hub_configuration[local_id].attachedNodes;
         rxChannels = GlobalParams::hub_configuration[local_id].rxChannels;
         txChannels = GlobalParams::hub_configuration[local_id].txChannels;
@@ -199,6 +198,7 @@ SC_MODULE(Hub)
     int getID() { return local_id;}
 
     private:
+    
     map<int,int> flit_transmission_cycles;
 
     void txRadioProcessTokenPacket(int channel);

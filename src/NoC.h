@@ -131,6 +131,8 @@ SC_MODULE(NoC)
     void buildCommon();
     void asciiMonitor();
     int * hub_connected_ports;
+    vector<int> faultGenerator();
+    void invalidate(int,int,int);
 };
 
 //Hub * dd;

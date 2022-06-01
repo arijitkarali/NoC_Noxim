@@ -68,6 +68,7 @@ int Hub::route(Flit& f)
 			return findRelay(loc,f.dst_id);
 		}
 	}
+	if(!hasRadioHub(f.dst_id)) return findRelay(loc,f.dst_id);
 	return DIRECTION_WIRELESS;
 
 }
@@ -536,6 +537,7 @@ void Hub::tileToAntennaProcess()
 				
 				if(r_from_tile[i][vc]==DIRECTION_WIRELESS)
 				{
+					tt = wireless; 
 					if (flit.flit_type == FLIT_TYPE_HEAD)
 					{
 						TReservation r;
@@ -580,34 +582,38 @@ void Hub::tileToAntennaProcess()
 				
 				if(r_from_tile[i][vc] <= 4) // local or adjacents i.e. NSEWL
 				{
-					// get reservation for wired port delivery
-					TReservation r;
-				      r.input = i;
-				      r.vc = vc;
-				      int o = r_from_tile[i][vc];
+					tt = wired;
+					if (flit.flit_type == FLIT_TYPE_HEAD)
+					{
+						// get reservation for wired port delivery
+						TReservation r;
+				      		r.input = i;
+				      		r.vc = vc;
+				      		int o = r_from_tile[i][vc];
 					
-				      LOG << " checking availability of Output[" << o << "] for Input[" << i << "][" << vc << "] flit " << flit << endl;
+				      		LOG << " checking availability of Output[" << o << "] for Input[" << i << "][" << vc << "] flit " << flit << endl;
 
-				      int rt_status = reservation_table.checkReservation(r,o);
+				      		int rt_status = reservation_table.checkReservation(r,o);
 
-				      if (rt_status == RT_AVAILABLE) 
-				      {
-					  LOG << " reserving direction " << o << " for flit " << flit << endl;
-					  reservation_table.reserve(r, o);
-				      }
-				      else if (rt_status == RT_ALREADY_SAME)
-				      {
-					  LOG << " RT_ALREADY_SAME reserved direction " << o << " for flit " << flit << endl;
-				      }
-				      else if (rt_status == RT_OUTVC_BUSY)
-				      {
-					  LOG << " RT_OUTVC_BUSY reservation direction " << o << " for flit " << flit << endl;
-				      }
-				      else if (rt_status == RT_ALREADY_OTHER_OUT)
-				      {
-					  LOG  << "RT_ALREADY_OTHER_OUT: another output previously reserved for the same flit " << endl;
-				      }
-				      else assert(false); // no meaningful status here
+				      		if (rt_status == RT_AVAILABLE) 
+				      		{
+					  		LOG << " reserving direction " << o << " for flit " << flit << endl;
+					  		reservation_table.reserve(r, o);
+				      		}
+				      		else if (rt_status == RT_ALREADY_SAME)
+					      {
+						  LOG << " RT_ALREADY_SAME reserved direction " << o << " for flit " << flit << endl;
+					      }
+					      else if (rt_status == RT_OUTVC_BUSY)
+					      {
+						  LOG << " RT_OUTVC_BUSY reservation direction " << o << " for flit " << flit << endl;
+					      }
+					      else if (rt_status == RT_ALREADY_OTHER_OUT)
+					      {
+						  LOG  << "RT_ALREADY_OTHER_OUT: another output previously reserved for the same flit " << endl;
+					      }
+					      else assert(false); // no meaningful status here
+					}
 				}
 				
 			}
@@ -622,7 +628,7 @@ void Hub::tileToAntennaProcess()
 	for (int i = 0; i < num_ports; i++)
 	{
 		vector<pair<int,int> > reservations;
-		if(i<num_ports-1) reservations = tile2antenna_reservation_table.getReservations(i);
+		if(tt == wireless) reservations = tile2antenna_reservation_table.getReservations(i);
 		else reservations = reservation_table.getReservations(i);
 		
 		if (reservations.size()!=0)
@@ -682,7 +688,7 @@ void Hub::tileToAntennaProcess()
 			  // power contribution already computed in 1st phase
 			  Flit flit = buffer_from_tile[i][vc].Front();
 			  //LOG<< "*****TX***Direction= "<<i<< "************"<<endl;
-			  //LOG<<"_cl_tx="<<current_level_tx[o]<<"req_tx="<<req_tx[o].read()<<" _ack= "<<ack_tx[o].read()<< endl;
+			  LOG<<"_cl_tx="<<current_level_tx[o]<<"req_tx="<<req_tx[o].read()<<" _ack= "<<ack_tx[o].read()<< endl;
 			  
 			  if ( (current_level_tx[o] == ack_tx[o].read()) &&
 			       (buffer_full_status_tx[o].read().mask[vc] == false) ) 
